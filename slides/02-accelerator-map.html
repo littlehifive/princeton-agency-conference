@@ -7,79 +7,95 @@
 <link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
-  .slide { padding: 76px 100px 60px; }
-  .am-lead { margin: 18px 0 0; font-size: 25px; font-weight: 400; line-height: 1.42;
-    color: var(--ink-secondary); max-width: 1660px; }
-  .am-lead strong { font-weight: 700; color: var(--ink); }
-  .am-row { display: flex; gap: 36px; flex: 1; margin-top: 22px; min-height: 0; }
+  .slide { padding: 62px 88px 44px; }
+  .am-hint { margin: 12px 0 0; display: flex; align-items: center; gap: 11px;
+    font-size: 18px; font-weight: 500; color: var(--ink-secondary); }
+  .am-hint .tag { flex: none; font-size: 13px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--navy); background: var(--gold);
+    border-radius: 6px; padding: 5px 10px; }
+  .am-hint button { font: 700 15px Montserrat, sans-serif; color: var(--navy);
+    background: none; border: 2px solid var(--navy); border-radius: 999px;
+    padding: 3px 16px; cursor: pointer; }
+  .am-hint button:hover { background: var(--navy); color: #fff; }
+
+  .am-row { display: flex; gap: 28px; flex: 1; margin-top: 12px; min-height: 0; }
   .am-mapwrap { position: relative; flex: 0 0 auto; }
   .am-mapwrap svg { display: block; }
-  .am-note { position: absolute; left: 6px; bottom: 2px; font-size: 16px; font-weight: 500;
-    color: var(--ink-muted); }
+  .am-note { position: absolute; left: 4px; bottom: 2px; font-size: 13.5px; font-weight: 500;
+    color: var(--ink-muted); margin: 0; }
   .am-country { fill: #E3EAF1; stroke: #FFFFFF; stroke-width: 1; }
+  .am-stroke { fill: none; stroke: #FFFFFF; stroke-width: 1.1; pointer-events: none; }
+  .am-band, .am-solo { cursor: pointer; }
   .am-chipdot { cursor: pointer; }
   .am-chipdot circle { fill: var(--navy-deep); stroke-width: 3; }
   .am-chipdot text { fill: #FFFFFF; font: 800 12.5px Montserrat, sans-serif; text-anchor: middle;
     dominant-baseline: central; letter-spacing: 0.02em; pointer-events: none; }
-  .am-chipdot.active circle { stroke-width: 5; }
+  .am-chipdot.active circle { stroke-width: 5.5; }
   .am-leader { stroke: #9DB0C2; stroke-width: 1.4; fill: none; }
 
-  .am-side { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-  .am-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    box-shadow: var(--shadow-md); padding: 26px 32px 22px; }
-  .am-card .co { display: flex; align-items: center; gap: 16px; }
-  .am-card .sq { width: 54px; height: 54px; border-radius: 10px; background: var(--navy-deep);
-    color: #fff; font: 800 19px Montserrat, sans-serif; display: flex; align-items: center;
-    justify-content: center; border-bottom: 4px solid transparent; flex: none; }
-  .am-card .nm { margin: 0; font-size: 27px; font-weight: 800; color: var(--navy); line-height: 1.15; }
-  .am-card .ck { margin: 2px 0 0; font-size: 17px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--ink-muted); }
-  .am-card .pr { margin: 18px 0 0; font-size: 23px; font-weight: 700; color: var(--navy); }
-  .am-card .ds { margin: 8px 0 0; font-size: 20.5px; font-weight: 400; line-height: 1.42;
-    color: var(--ink-secondary); }
-  .am-card .im { margin: 16px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
-  .am-card .im li { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0 0;
-    margin-top: 11px; }
-  .am-card .im li:first-child { border-top: none; }
-  .am-card .im li + li { border-top: 1px solid var(--border); }
-  .am-card .lv { flex: none; margin-top: 2px; font: 700 13px Montserrat, sans-serif;
-    letter-spacing: 0.06em; color: #fff; background: var(--navy-deep); border-radius: 6px;
-    padding: 4px 8px; }
-  .am-card .im p { margin: 0; font-size: 19px; font-weight: 500; line-height: 1.38; color: var(--ink); }
-  .am-card .ct { margin: 16px 0 0; font-size: 17px; font-weight: 600; letter-spacing: 0.05em;
-    text-transform: uppercase; color: var(--ink-muted); }
-
-  .am-legend { margin-top: 16px; }
-  .am-legend .yr { font-size: 16px; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-muted); margin: 10px 0 6px; }
-  .am-legend .items { display: flex; flex-wrap: wrap; gap: 5px 20px; }
-  .am-legend .it { display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
-    font-size: 17.5px; font-weight: 600; color: var(--ink-secondary); line-height: 1.2;
-    padding: 1px 0; border-bottom: 2px solid transparent; }
-  .am-legend .it .dot { width: 14px; height: 14px; border-radius: 4px; flex: none; }
+  .am-legend { position: absolute; right: 18px; bottom: 34px; background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-md);
+    padding: 12px 16px 14px; display: flex; gap: 20px; }
+  .am-legend .yr { font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); margin: 0 0 6px; }
+  .am-legend .items { display: flex; flex-direction: column; gap: 3px; }
+  .am-legend .it { display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+    font-size: 13.5px; font-weight: 600; color: var(--ink-secondary); line-height: 1.24;
+    border-bottom: 2px solid transparent; white-space: nowrap; }
+  .am-legend .it .dot { width: 11px; height: 11px; border-radius: 3px; flex: none; }
   .am-legend .it.active { color: var(--navy); border-bottom-color: currentColor; }
+
+  .am-side { flex: 1; min-width: 0; }
+  .am-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    box-shadow: var(--shadow-md); padding: 22px 24px 18px; min-height: 0; }
+  .am-card .co { display: flex; align-items: center; gap: 15px; }
+  .am-card .sq { width: 48px; height: 48px; border-radius: 8px; background: var(--navy-deep);
+    color: #fff; font: 800 18px Montserrat, sans-serif; display: flex; align-items: center;
+    justify-content: center; border-bottom: 4px solid transparent; flex: none; }
+  .am-card .nm { margin: 0; font-size: 22.5px; font-weight: 800; color: var(--navy); line-height: 1.12; }
+  .am-card .ck { margin: 2px 0 0; font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .am-card .pr { margin: 12px 0 0; font-size: 20px; font-weight: 700; color: var(--navy); }
+  .am-card .ds { margin: 5px 0 0; font-size: 16.5px; font-weight: 400; line-height: 1.34;
+    color: var(--ink-secondary); }
+  .am-card .im { margin: 12px 0 0; padding: 0; list-style: none; }
+  .am-card .im li { display: flex; gap: 10px; align-items: flex-start; padding-top: 8px;
+    margin-top: 8px; border-top: 1px solid var(--border); }
+  .am-card .lv { flex: none; margin-top: 1px; width: 96px; text-align: center;
+    font: 700 11.5px Montserrat, sans-serif; letter-spacing: 0.05em; color: #fff;
+    background: var(--navy-deep); border-radius: 6px; padding: 4px 0; }
+  .am-card .lv.pl { background: none; border: 1.5px solid var(--ink-muted);
+    color: var(--ink-muted); padding: 2.5px 0; }
+  .am-card .im p { margin: 0; font-size: 15.6px; font-weight: 500; line-height: 1.3; color: var(--ink); }
+  .am-card .im p.pl { color: var(--ink-secondary); font-weight: 400; }
+  .am-card .ct { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--border);
+    font-size: 13.8px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-muted); line-height: 1.45; }
+  .am-card .ct strong { color: var(--navy); font-weight: 800; }
 </style>
 </head>
 <body>
-  <div class="slide">
-    <p class="eyebrow" data-reveal>Why now &middot; Two years of the AI for Global Development Accelerator</p>
-    <h1 data-reveal>Fifteen AI products, already <span class="accent">on the map</span></h1>
-    <p class="am-lead" data-reveal>Through the accelerator we run with <strong>OpenAI</strong> and the <strong>Center for Global Development</strong>, fifteen organizations built and shipped AI for the people they serve, across fourteen countries. Hover any organization to see its product and the evidence behind it.</p>
+  <div class="slide" id="am-slide">
+    <p class="eyebrow" data-reveal>TAF AI for Global Development Accelerator &middot; 2025 + 2026 cohorts</p>
+    <h1 data-reveal>An interactive map of organizations and their <span class="accent">AI products</span> in TAF's accelerator</h1>
+    <div class="am-hint" data-reveal>
+      <span class="tag">Interactive</span>
+      <span>Click the map, chips, or legend to focus an org. Click empty map/page space or</span>
+      <button id="am-reset" type="button">Reset</button>
+    </div>
 
     <div class="am-row">
       <div class="am-mapwrap" data-reveal>
-        <svg id="am-svg" width="966" height="640" viewBox="0 0 1180 780" role="img"
-          aria-label="Map of Africa and South Asia showing where the fifteen accelerator AI products operate"></svg>
-        <p class="am-note">Striped countries host several products. Map data: Natural Earth.</p>
+        <svg id="am-svg" width="1120" height="740" viewBox="0 0 1180 780" role="img"
+          aria-label="Map of Africa and South Asia showing where the sixteen accelerator organizations operate"></svg>
+        <p class="am-note">Segments show multiple organizations in one country; off-crop footprint countries appear in the details. Map data: Natural Earth.</p>
+        <div class="am-legend" id="am-legend">
+          <div><p class="yr">2025 cohort</p><div class="items" id="am-leg-2025"></div></div>
+          <div><p class="yr">2026 cohort</p><div class="items" id="am-leg-2026"></div></div>
+        </div>
       </div>
       <div class="am-side">
         <div class="am-card" id="am-card" data-reveal></div>
-        <div class="am-legend" data-reveal>
-          <p class="yr">2025 cohort</p>
-          <div class="items" id="am-leg-2025"></div>
-          <p class="yr">2026 cohort</p>
-          <div class="items" id="am-leg-2026"></div>
-        </div>
       </div>
     </div>
   </div>
@@ -91,44 +107,41 @@
   var NS = 'http://www.w3.org/2000/svg';
   var svg = document.getElementById('am-svg');
   var ORGS = window.A2L_ORGS;
+  var DEFAULT_ID = 'digital-green';
   var byId = {};
   ORGS.forEach(function (o) { byId[o.id] = o; });
 
-  /* Which orgs run in each country, in stripe order (similar hues kept apart). */
-  var COUNTRY_ORGS = {
-    'Kenya': ['digital-green', 'living-goods', 'jacaranda-health', 'ami', 'maisha-meds'],
-    'Ethiopia': ['digital-green'],
-    'India': ['digital-green', 'precision-development', 'noora-health', 'adalat-ai', 'intelehealth', 'rocket-learning', 'youth-impact'],
-    'Bangladesh': ['noora-health'],
-    'Nepal': ['noora-health'],
-    'South Africa': ['reach-digital-health'],
-    'Botswana': ['youth-impact'],
-    'Mali': ['kabakoo'],
-    'Togo': ['kabakoo'],
-    'Uganda': ['maisha-meds', 'raising-the-village'],
-    'Rwanda': ['one-acre-fund', 'raising-the-village'],
-    'Tanzania': ['maisha-meds'],
-    'Nigeria': ['maisha-meds'],
-    'Dem. Rep. Congo': ['raising-the-village']
-  };
+  /* Countries -> resident orgs, derived from orgCountries, segment order set to
+     keep similar hues apart (order defined in the data file via segmentRank). */
+  var COUNTRY_ORGS = {};
+  ORGS.forEach(function (o) {
+    o.orgCountries.forEach(function (c) {
+      COUNTRY_ORGS[c] = COUNTRY_ORGS[c] || [];
+      if (COUNTRY_ORGS[c].indexOf(o.id) === -1) COUNTRY_ORGS[c].push(o.id);
+    });
+  });
+  Object.keys(COUNTRY_ORGS).forEach(function (c) {
+    COUNTRY_ORGS[c].sort(function (a, b) { return byId[a].segmentRank - byId[b].segmentRank; });
+  });
 
-  /* Chip anchor per org: [x, y] chip center; leader drawn to its country centroid. */
+  /* Chip anchors: offsets from a country's centroid, so crop changes stay sane. */
   var CHIP_POS = {
-    'digital-green':        { at: [648, 268], to: 'Ethiopia' },
-    'jacaranda-health':     { at: [690, 372], to: 'Kenya' },
-    'ami':                  { at: [690, 418], to: 'Kenya' },
-    'living-goods':         { at: [690, 464], to: 'Kenya' },
-    'maisha-meds':          { at: [640, 545], to: 'Tanzania' },
-    'raising-the-village':  { at: [524, 330], to: 'Uganda' },
-    'one-acre-fund':        { at: [452, 490], to: 'Rwanda' },
-    'kabakoo':              { at: [222, 180], to: null },
-    'reach-digital-health': { at: [462, 700], to: null },
-    'youth-impact':         { at: [452, 630], to: null },
-    'precision-development':{ at: [846, 200], to: 'India' },
-    'rocket-learning':      { at: [846, 246], to: 'India' },
-    'adalat-ai':            { at: [846, 292], to: 'India' },
-    'intelehealth':         { at: [846, 338], to: 'India' },
-    'noora-health':         { at: [1040, 230], to: 'Bangladesh' }
+    'digital-green':        { c: 'Ethiopia', dx: 40, dy: -55 },
+    'jacaranda-health':     { c: 'Kenya', dx: 116, dy: -36 },
+    'ami':                  { c: 'Kenya', dx: 116, dy: 10 },
+    'living-goods':         { c: 'Kenya', dx: 116, dy: 56 },
+    'maisha-meds':          { c: 'Tanzania', dx: 92, dy: 72 },
+    'raising-the-village':  { c: 'Uganda', dx: -8, dy: -68 },
+    'one-acre-fund':        { c: 'Rwanda', dx: -60, dy: 62 },
+    'kabakoo':              { c: 'Mali', dx: 8, dy: -54 },
+    'reach-digital-health': { c: 'South Africa', dx: 4, dy: -8 },
+    'youth-impact':         { c: 'Botswana', dx: 0, dy: -8 },
+    'precision-development':{ c: 'India', dx: -86, dy: 24 },
+    'rocket-learning':      { c: 'India', dx: -86, dy: 70 },
+    'adalat-ai':            { c: 'India', dx: -86, dy: 116 },
+    'intelehealth':         { c: 'India', dx: -86, dy: 162 },
+    'udhyam':               { c: 'India', dx: -86, dy: 208 },
+    'noora-health':         { c: 'Bangladesh', dx: 20, dy: 64 }
   };
 
   var CENTROIDS = {};
@@ -141,66 +154,69 @@
     return e;
   }
 
-  /* Defs: one stripe pattern per multi-org country. */
+  var state = { selected: DEFAULT_ID };
+
   var defs = el('defs', {}, svg);
-  var SW = 13; /* stripe width in px */
-  Object.keys(COUNTRY_ORGS).forEach(function (name) {
-    var ids = COUNTRY_ORGS[name];
-    if (ids.length < 2) return;
-    var pat = el('pattern', {
-      id: 'pat-' + name.replace(/[^a-z]/gi, ''),
-      patternUnits: 'userSpaceOnUse', width: ids.length * SW, height: 24,
-      patternTransform: 'rotate(45)'
-    }, defs);
-    ids.forEach(function (id, i) {
-      el('rect', { x: i * SW, y: 0, width: SW, height: 24, fill: byId[id].color }, pat);
-    });
-  });
-
-  /* Country layer. */
   var gMap = el('g', {}, svg);
-  var countryEls = {};
-  window.WORLD_PATHS.forEach(function (c) {
-    var p = el('path', { d: c.d, 'class': 'am-country' }, gMap);
-    var ids = COUNTRY_ORGS[c.name];
-    if (ids) {
-      p.style.fill = ids.length === 1 ? byId[ids[0]].color
-        : 'url(#pat-' + c.name.replace(/[^a-z]/gi, '') + ')';
-      p.style.fillOpacity = '0.85';
-      countryEls[c.name] = p;
-    }
-  });
-
-  /* Leader lines under chips. */
   var gLead = el('g', {}, svg);
   var gChips = el('g', {}, svg);
+
+  /* Countries: members get clipped org bands + a solo overlay; others are inert. */
+  var members = {}; /* name -> { bands: [{rect, org}], solo, ids } */
+  window.WORLD_PATHS.forEach(function (c) {
+    var ids = COUNTRY_ORGS[c.name];
+    if (!ids) { el('path', { d: c.d, 'class': 'am-country' }, gMap); return; }
+    var key = c.name.replace(/[^a-z]/gi, '');
+    var clip = el('clipPath', { id: 'clip-' + key }, defs);
+    el('path', { d: c.d }, clip);
+    var base = el('path', { d: c.d, 'class': 'am-country' }, gMap);
+    var bbox = base.getBBox();
+    var gBands = el('g', { 'clip-path': 'url(#clip-' + key + ')' }, gMap);
+    var bands = [];
+    var w = bbox.width / ids.length;
+    ids.forEach(function (id, i) {
+      var r = el('rect', {
+        x: bbox.x + i * w, y: bbox.y, width: w, height: bbox.height,
+        fill: byId[id].color, 'class': 'am-band', 'data-org': id
+      }, gBands);
+      hookOrgEvents(r, id);
+      bands.push({ rect: r, org: id });
+    });
+    var solo = el('rect', {
+      x: bbox.x, y: bbox.y, width: bbox.width, height: bbox.height,
+      'class': 'am-solo', style: 'display:none'
+    }, gBands);
+    hookDynamicOrgEvents(solo);
+    el('path', { d: c.d, 'class': 'am-stroke' }, gMap);
+    members[c.name] = { bands: bands, solo: solo, ids: ids };
+  });
+
+  /* Chips + leader lines. */
   var chipEls = {};
   ORGS.forEach(function (o) {
     var cfg = CHIP_POS[o.id];
-    if (!cfg) return;
-    if (cfg.to && CENTROIDS[cfg.to]) {
-      var c = CENTROIDS[cfg.to];
-      el('line', { x1: cfg.at[0], y1: cfg.at[1], x2: c[0], y2: c[1], 'class': 'am-leader' }, gLead);
+    if (!cfg || !CENTROIDS[cfg.c]) return;
+    var cx = CENTROIDS[cfg.c][0] + cfg.dx, cy = CENTROIDS[cfg.c][1] + cfg.dy;
+    if (Math.abs(cfg.dx) + Math.abs(cfg.dy) > 30) {
+      el('line', { x1: cx, y1: cy, x2: CENTROIDS[cfg.c][0], y2: CENTROIDS[cfg.c][1], 'class': 'am-leader' }, gLead);
     }
-    var g = el('g', { 'class': 'am-chipdot', transform: 'translate(' + cfg.at[0] + ',' + cfg.at[1] + ')' }, gChips);
+    var g = el('g', { 'class': 'am-chipdot', transform: 'translate(' + cx + ',' + cy + ')' }, gChips);
     el('circle', { r: 18, stroke: o.color }, g);
     var t = el('text', {}, g);
     t.textContent = o.chip;
-    g.addEventListener('mouseenter', function () { setActive(o.id); });
-    g.addEventListener('click', function () { setActive(o.id); });
+    hookOrgEvents(g, o.id);
     chipEls[o.id] = g;
   });
 
-  /* Legend. */
+  /* Legend inside the map's ocean space. */
   var legEls = {};
   [2025, 2026].forEach(function (year) {
     var wrap = document.getElementById('am-leg-' + year);
     ORGS.filter(function (o) { return o.cohort === year; }).forEach(function (o) {
       var it = document.createElement('span');
       it.className = 'it';
-      it.innerHTML = '<span class="dot" style="background:' + o.color + '"></span>' + o.name;
-      it.addEventListener('mouseenter', function () { setActive(o.id); });
-      it.addEventListener('click', function () { setActive(o.id); });
+      it.innerHTML = '<span class="dot" style="background:' + o.color + '"></span>' + (o.short || o.name);
+      hookOrgEvents(it, o.id);
       wrap.appendChild(it);
       legEls[o.id] = it;
     });
@@ -209,60 +225,86 @@
   var LEVELS = { L1: 'L1 · MODEL', L2: 'L2 · PRODUCT', L3: 'L3 · USER', L4: 'L4 · IMPACT' };
   var card = document.getElementById('am-card');
 
+  function listCountries(arr, max) {
+    if (arr.length <= max) return arr.join(' · ');
+    return arr.slice(0, max).join(' · ') + ' +' + (arr.length - max) + ' more';
+  }
+
   function renderCard(o) {
     var h = '<div class="co"><span class="sq" style="border-bottom-color:' + o.color + '">' + o.chip + '</span>' +
       '<span><p class="nm">' + o.name + '</p><p class="ck">' + o.cohort + ' cohort</p></span></div>' +
       '<p class="pr">' + o.product + '</p>' +
-      '<p class="ds">' + o.desc + '</p>';
-    if (o.impact.length) {
-      h += '<ul class="im">' + o.impact.map(function (f) {
-        return '<li><span class="lv">' + LEVELS[f.level] + '</span><p>' + f.fact + '</p></li>';
-      }).join('') + '</ul>';
-    }
-    h += '<p class="ct">' + o.countries.join(' · ') + '</p>';
+      '<p class="ds">' + o.desc + '</p>' +
+      '<ul class="im">' + ['L1', 'L2', 'L3', 'L4'].map(function (lv) {
+        var f = o.levels[lv];
+        var pl = f.planned ? ' pl' : '';
+        return '<li><span class="lv' + pl + '">' + LEVELS[lv] + '</span><p class="' + (f.planned ? 'pl' : '') + '">' + f.fact + '</p></li>';
+      }).join('') + '</ul>' +
+      '<p class="ct"><strong>AI product:</strong> ' + listCountries(o.aiCountries, 6) +
+      '<br><strong>Organization operates:</strong> ' + listCountries(o.orgCountries, 8) + '</p>';
     card.innerHTML = h;
   }
 
-  function setActive(id) {
-    var o = byId[id];
-    renderCard(o);
-    ORGS.forEach(function (org) {
-      if (chipEls[org.id]) chipEls[org.id].classList.toggle('active', org.id === id);
-      if (legEls[org.id]) legEls[org.id].classList.toggle('active', org.id === id);
-    });
-    Object.keys(COUNTRY_ORGS).forEach(function (name) {
-      var p = countryEls[name];
-      if (!p) return;
-      var ids = COUNTRY_ORGS[name];
-      if (ids.indexOf(id) !== -1) {
-        p.style.fill = o.color;
-        p.style.fillOpacity = '0.95';
+  function render() {
+    var act = state.selected;
+    var actOrg = byId[act];
+    Object.keys(members).forEach(function (name) {
+      var m = members[name];
+      if (actOrg.orgCountries.indexOf(name) !== -1) {
+        m.solo.style.display = '';
+        m.solo.style.fill = actOrg.color;
+        m.solo.style.fillOpacity = '0.95';
+        m.solo.setAttribute('data-org', act);
+        m.bands.forEach(function (b) { b.rect.style.display = 'none'; });
       } else {
-        p.style.fill = ids.length === 1 ? byId[ids[0]].color
-          : 'url(#pat-' + name.replace(/[^a-z]/gi, '') + ')';
-        p.style.fillOpacity = '0.3';
+        m.solo.style.display = 'none';
+        m.solo.removeAttribute('data-org');
+        m.bands.forEach(function (b) {
+          b.rect.style.display = '';
+          b.rect.style.fillOpacity = '0.28';
+        });
       }
     });
+    ORGS.forEach(function (o) {
+      if (chipEls[o.id]) chipEls[o.id].classList.toggle('active', o.id === act);
+      if (legEls[o.id]) legEls[o.id].classList.toggle('active', o.id === act);
+    });
+    renderCard(actOrg);
   }
 
-  /* Default state: nothing dimmed, featured org in the card. */
-  renderCard(byId['digital-green']);
-  chipEls['digital-green'].classList.add('active');
-  legEls['digital-green'].classList.add('active');
-
-  /* Leaving the map/legend restores the all-orgs view but keeps the card. */
-  function resetFills() {
-    Object.keys(COUNTRY_ORGS).forEach(function (name) {
-      var p = countryEls[name];
-      if (!p) return;
-      var ids = COUNTRY_ORGS[name];
-      p.style.fill = ids.length === 1 ? byId[ids[0]].color
-        : 'url(#pat-' + name.replace(/[^a-z]/gi, '') + ')';
-      p.style.fillOpacity = '0.85';
+  function hookOrgEvents(target, id) {
+    target.addEventListener('click', function (e) {
+      e.stopPropagation();
+      state.selected = id;
+      render();
     });
   }
-  svg.addEventListener('mouseleave', resetFills);
-  document.querySelector('.am-legend').addEventListener('mouseleave', resetFills);
+
+  function hookDynamicOrgEvents(target) {
+    target.addEventListener('click', function (e) {
+      var id = target.getAttribute('data-org');
+      if (!id) return;
+      e.stopPropagation();
+      state.selected = id;
+      render();
+    });
+  }
+
+  function resetDefault() {
+    state.selected = DEFAULT_ID;
+    render();
+  }
+
+  /* Clicks anywhere quiet (water, gray countries, slide whitespace) reset. */
+  document.getElementById('am-slide').addEventListener('click', resetDefault);
+  document.getElementById('am-reset').addEventListener('click', function (e) {
+    e.stopPropagation();
+    resetDefault();
+  });
+  document.getElementById('am-card').addEventListener('click', function (e) { e.stopPropagation(); });
+  document.getElementById('am-legend').addEventListener('click', function (e) { e.stopPropagation(); });
+
+  render();
 })();
 </script>
 <script>

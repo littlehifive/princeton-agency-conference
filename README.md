@@ -24,9 +24,9 @@ Contact: Zezhen (Michael) Wu, <zezhen@agency.fund>
 
 1. Cover
 2. AI at the frontline (the AI for Global Development Accelerator context)
-3. The agency flywheel (The Agency Fund's worldview; AI sits at every station)
-4. AI can expand or hamper agency (three studies, 2025 to 2026)
-5. The two gaps: design and measurement
+3. The two gaps: design and measurement
+4. The agency flywheel (The Agency Fund's worldview; AI sits at every station)
+5. Research evidence on how AI can expand or hamper agency
 6. Part 2 divider: the lab
 7. What A²L is: one lab with two jobs
 8. How the lab runs: tri-sector teams, time-boxed studies, reusable artifacts
@@ -47,7 +47,7 @@ Contact: Zezhen (Michael) Wu, <zezhen@agency.fund>
 23. Join the lab: funders, researchers, practitioners
 24. Close
 
-Slides 3, 4, 12, 13, and 14 are reused from the
+Slides 4, 5, 12, 13, and 14 are reused from the
 [Nairobi agency measurement workshop deck](https://github.com/agency-fund/taf-nairobi-agency-measurement-slides).
 
 ## Rebuilding locally
