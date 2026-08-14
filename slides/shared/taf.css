@@ -12,7 +12,7 @@
   --ink-secondary: #495057;
   --ink-muted: #868E96;
   --border: #DEE2E6;
-  --slate-blue: #6699CC; /* muted eyebrow on navy */
+  --slate-blue: #6699CC; /* muted label on navy (cover) */
   --font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --shadow-md: 0 4px 8px hsl(210 50% 20% / 0.08);
 }
@@ -26,21 +26,23 @@ body {
 }
 .slide {
   width: 1920px; height: 1080px;
-  padding: 96px 120px 88px;
+  padding: 64px 120px 88px;
   display: flex; flex-direction: column;
 }
-/* Light-slide chrome */
-.eyebrow {
-  font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--ink-muted);
-  margin: 0 0 24px;
-}
+/* Light-slide chrome. Titles sit high and compact; no kicker above them. */
 h1 {
   margin: 0;
-  font-size: 60px; font-weight: 800; line-height: 1.12;
+  font-size: 48px; font-weight: 800; line-height: 1.15;
   letter-spacing: -0.015em; color: var(--navy);
   max-width: 1500px;
 }
+/* Optional one-line context directly under the title (replaces the old kicker). */
+.title-note {
+  margin: 14px 0 0;
+  font-size: 24px; font-weight: 500; line-height: 1.35;
+  color: var(--ink-muted);
+}
+.title-note a { color: var(--navy); }
 h1 .accent { color: var(--gold); }
 /* Cards */
 .card {
@@ -76,7 +78,6 @@ h1 .accent { color: var(--gold); }
 .step .text { font-size: 28px; line-height: 1.45; color: var(--ink); }
 /* Dark (navy) slides — dividers, cover */
 body.dark { background: var(--navy-deep); color: var(--white); }
-body.dark .eyebrow { color: var(--slate-blue); }
 body.dark h1 { color: var(--white); }
 /* Wordmark row (top of dark slides) */
 .wordmark {

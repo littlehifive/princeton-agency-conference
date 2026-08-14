@@ -7,8 +7,9 @@
 <link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
-  .pa-eyebrow { margin-bottom: 18px; }
-  .pa-title { font-size: 48px; max-width: 1680px; }
+  .pa-title { max-width: 1680px; }
+  .pa-title .count { font-size: 26px; font-weight: 600; color: var(--ink-muted);
+    letter-spacing: 0; margin-left: 18px; white-space: nowrap; }
   .pa-grid { margin-top: 28px; flex: 1; min-height: 0;
     display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
   .pa-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
@@ -34,8 +35,7 @@
 </head>
 <body>
   <div class="slide">
-    <p class="eyebrow pa-eyebrow" data-reveal>The cohort in detail &middot; 1 of 2</p>
-    <h1 class="pa-title" data-reveal>What each partner brings, and what we will <span class="accent">learn together</span></h1>
+    <h1 class="pa-title" data-reveal>What each partner brings, and what we will <span class="accent">learn together</span><span class="count">1 of 2</span></h1>
 
     <div class="pa-grid">
       <div class="pa-card hoverable" data-reveal>
