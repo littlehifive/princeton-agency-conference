@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Part 3 · Designing AI for agency</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  /* Dark full-bleed divider with a subtle navy radial for depth. */
+  body.dark .slide { justify-content: center; position: relative; padding: 130px 150px;
+    background: radial-gradient(120% 120% at 30% 20%, #0B2341, #061A2E 75%); }
+  .dd-topbar { position: absolute; top: 110px; left: 150px; display: flex; align-items: center; gap: 22px; }
+  .dd-tick { width: 56px; height: 6px; background: var(--gold); border-radius: 3px; }
+  .dd-wordmark { font-size: 20px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--white); }
+  .dd-eyebrow { font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold); margin: 0 0 30px; }
+  .dd-assertion { margin: 0; font-size: 88px; font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--white); max-width: 1520px; }
+  .dd-assertion .accent { color: var(--gold); }
+  .dd-support { margin: 40px 0 0; font-size: 28px; font-weight: 400; line-height: 1.5;
+    color: #C9D4E0; max-width: 1460px; }
+</style>
+</head>
+<body class="dark">
+  <div class="slide">
+    <div class="dd-topbar" data-reveal>
+      <span class="dd-tick"></span>
+      <span class="dd-wordmark">The Agency Fund</span>
+    </div>
+    <p class="dd-eyebrow" data-reveal>Part 3 &middot; Research: designing AI for agency</p>
+    <h1 class="dd-assertion" data-reveal="scale"><span class="accent">Design the agency in</span> &mdash; don't bolt it on.</h1>
+    <p class="dd-support" data-reveal>Field research inside real NGO products, asking what AI design does to users' agency &mdash; with the psychology brought in from the start.</p>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

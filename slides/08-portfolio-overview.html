@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The work so far</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1620px; }
+  .po-wrap { margin-top: 36px; flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 24px; }
+  .po-track { flex: 1; display: flex; align-items: stretch; gap: 30px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 26px 34px; }
+  .po-num { font-size: 46px; font-weight: 900; color: var(--gold); line-height: 1;
+    width: 54px; flex-shrink: 0; font-variant-numeric: tabular-nums; padding-top: 4px; }
+  .po-main { flex: 1; min-width: 0; }
+  .po-kind { margin: 0 0 6px; font-size: 17px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .po-t { margin: 0 0 8px; font-size: 30px; font-weight: 800; line-height: 1.2; color: var(--navy); }
+  .po-d { margin: 0; font-size: 24px; font-weight: 400; line-height: 1.4; color: var(--ink-secondary); }
+  .po-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .po-chip { font-size: 20px; font-weight: 600; color: var(--navy);
+    background: var(--surface-subtle); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 14px; }
+  .po-gaps { display: flex; flex-direction: column; justify-content: center; gap: 10px;
+    flex-shrink: 0; width: 300px; border-left: 1px solid var(--border); padding-left: 30px; }
+  .po-gaps .lbl { font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .po-gap { display: flex; align-items: center; gap: 10px;
+    font-size: 21px; font-weight: 700; color: var(--navy); }
+  .po-gap .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .po-gap.dim { color: var(--ink-muted); font-weight: 500; }
+  .po-gap.dim .dot { background: var(--border); }
+  .slide .footnote { margin-top: 24px; font-size: 23px; color: var(--ink-secondary); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>What the lab has built so far: <span class="accent">three bodies of work</span>, aimed at the two gaps</h1>
+
+    <div class="po-wrap">
+      <div class="po-track" data-reveal>
+        <span class="po-num">1</span>
+        <div class="po-main">
+          <p class="po-kind">Learning projects &middot; repeatable motions</p>
+          <p class="po-t">Put the agency literature in practitioners' hands</p>
+          <p class="po-d">Assistants, papers, and skills any organization can pick up and reuse.</p>
+          <div class="po-chips">
+            <span class="po-chip">NotebookLM research assistants</span>
+            <span class="po-chip">Evaluating AI Across Cultures (PNAS Nexus)</span>
+            <span class="po-chip">Behavioral-science skills with Irrational Labs</span>
+          </div>
+        </div>
+        <div class="po-gaps">
+          <span class="lbl">Addresses</span>
+          <span class="po-gap"><span class="dot"></span>The design gap</span>
+          <span class="po-gap"><span class="dot"></span>The measurement gap</span>
+        </div>
+      </div>
+
+      <div class="po-track" data-reveal>
+        <span class="po-num">2</span>
+        <div class="po-main">
+          <p class="po-kind">Research projects &middot; designing AI for agency</p>
+          <p class="po-t">Study what agency-centered design does inside real products</p>
+          <p class="po-d">Field research with NGO partners, with the psychology brought in from the start.</p>
+          <div class="po-chips">
+            <span class="po-chip">Noora Health copilot study</span>
+            <span class="po-chip">Wise interventions &times; AI design agenda</span>
+          </div>
+        </div>
+        <div class="po-gaps">
+          <span class="lbl">Addresses</span>
+          <span class="po-gap"><span class="dot"></span>The design gap</span>
+          <span class="po-gap dim"><span class="dot"></span>The measurement gap</span>
+        </div>
+      </div>
+
+      <div class="po-track" data-reveal>
+        <span class="po-num">3</span>
+        <div class="po-main">
+          <p class="po-kind">Research projects &middot; measuring agency</p>
+          <p class="po-t">Build instruments that read agency from real usage</p>
+          <p class="po-d">A field-tested method, and a flagship study to validate it at scale.</p>
+          <div class="po-chips">
+            <span class="po-chip">Nairobi rubric sprint</span>
+            <span class="po-chip">Penn LLM-judge study with six NGOs</span>
+          </div>
+        </div>
+        <div class="po-gaps">
+          <span class="lbl">Addresses</span>
+          <span class="po-gap dim"><span class="dot"></span>The design gap</span>
+          <span class="po-gap"><span class="dot"></span>The measurement gap</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footnote" data-reveal>
+      <span class="mark"></span>
+      <span>Also shipped: an Agency/AI University course demo and an agency-based intervention playbook (in progress) &mdash; everything open and reusable.</span>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

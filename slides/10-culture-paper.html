@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Evaluating AI Across Cultures</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1640px; }
+  .cp-wrap { margin-top: 32px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 560px 1fr; gap: 44px; }
+
+  /* Paper "cover" card */
+  .cp-paper { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: 0 10px 26px hsl(210 50% 20% / 0.14); padding: 34px 38px;
+    display: flex; flex-direction: column; }
+  .cp-journal { display: flex; align-items: center; gap: 14px; padding-bottom: 18px;
+    border-bottom: 3px solid var(--navy); }
+  .cp-journal .jn { font-size: 26px; font-weight: 800; color: var(--navy); letter-spacing: 0.01em; }
+  .cp-journal .yr { margin-left: auto; font-size: 18px; font-weight: 600; color: var(--ink-muted); }
+  .cp-title { margin: 22px 0 0; font-size: 31px; font-weight: 800; line-height: 1.25; color: var(--ink); }
+  .cp-sub { margin: 14px 0 0; font-size: 21px; font-weight: 400; line-height: 1.42; color: var(--ink-secondary); }
+  .cp-inst { margin-top: auto; padding-top: 22px; border-top: 1px solid var(--border); }
+  .cp-inst .h { margin: 0 0 10px; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .cp-inst .list { margin: 0; font-size: 19px; font-weight: 500; line-height: 1.55; color: var(--ink-secondary); }
+
+  /* Levels with hidden defaults */
+  .cp-levels { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+  .cp-lv { flex: 1; display: flex; align-items: center; gap: 24px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 16px 26px; }
+  .cp-lv .n { width: 128px; flex-shrink: 0; }
+  .cp-lv .n .lv { display: block; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .cp-lv .n .nm { display: block; font-size: 25px; font-weight: 800; color: var(--navy); }
+  .cp-lv .dft { margin: 0; font-size: 22px; font-weight: 400; line-height: 1.36; color: var(--ink-secondary); }
+  .cp-lv .dft strong { font-weight: 700; color: var(--ink); }
+  .cp-panel { background: var(--navy-deep); border-radius: 12px; padding: 22px 28px; }
+  .cp-panel p { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.45; color: #E6EDF4; }
+  .cp-panel p .accent { color: var(--gold); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>Every benchmark and metric carries <span class="accent">cultural defaults</span> &mdash; we mapped where they hide</h1>
+    <p class="title-note" data-reveal>Learning projects &middot; multi-author paper from the accelerator's working group, PNAS Nexus (2026)</p>
+
+    <div class="cp-wrap">
+      <div class="cp-paper" data-reveal>
+        <div class="cp-journal"><span class="jn">PNAS Nexus</span><span class="yr">2026</span></div>
+        <p class="cp-title">Evaluating AI Across Cultures: A Multilevel Framework for Generative AI in Global Development</p>
+        <p class="cp-sub">Culture is not a variable to control for. It operates as a set of <strong>defaults</strong> &mdash; invisible assumptions about what "good" looks like &mdash; baked into every evaluation tool.</p>
+        <div class="cp-inst">
+          <p class="h">A working group across</p>
+          <p class="list">The Agency Fund &middot; Stanford &middot; Microsoft Research &middot; Center for Global Development &middot; Carnegie Mellon &middot; Michigan State &middot; UT Dallas &middot; George Washington</p>
+        </div>
+      </div>
+
+      <div class="cp-levels">
+        <div class="cp-lv" data-reveal>
+          <div class="n"><span class="lv">Level 1</span><span class="nm">Model</span></div>
+          <p class="dft">Benchmarks test <strong>Western academic knowledge in English</strong> &mdash; and say nothing about care advice in the Rift Valley.</p>
+        </div>
+        <div class="cp-lv" data-reveal>
+          <div class="n"><span class="lv">Level 2</span><span class="nm">Product</span></div>
+          <p class="dft">Engagement metrics inherit <strong>commercial defaults</strong>: attention is not utility, and more usage is not more welfare.</p>
+        </div>
+        <div class="cp-lv" data-reveal>
+          <div class="n"><span class="lv">Level 3</span><span class="nm">User</span></div>
+          <p class="dft">Psychological measures assume <strong>WEIRD constructs and survey norms</strong> that do not travel across cultures.</p>
+        </div>
+        <div class="cp-lv" data-reveal>
+          <div class="n"><span class="lv">Level 4</span><span class="nm">Impact</span></div>
+          <p class="dft">Trials chase a <strong>moving target</strong>: model updates and prompt changes silently shift the product mid-study.</p>
+        </div>
+        <div class="cp-panel" data-reveal>
+          <p>When the tool's defaults don't match the deployment context, evaluation produces <span class="accent">artifacts, not evidence</span>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

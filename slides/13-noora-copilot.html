@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Noora copilot study</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1660px; }
+  .nc-wrap { margin-top: 30px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 1fr 1.15fr; gap: 40px; }
+  .nc-col { display: flex; flex-direction: column; gap: 20px; min-height: 0; }
+
+  /* Context + stats */
+  .nc-context { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 24px 28px; }
+  .nc-context .h { margin: 0 0 8px; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .nc-context p { margin: 0; font-size: 23px; font-weight: 400; line-height: 1.42; color: var(--ink-secondary); }
+  .nc-context p strong { font-weight: 700; color: var(--navy); }
+  .nc-stats { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .nc-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 20px 24px; display: flex; flex-direction: column;
+    justify-content: center; }
+  .nc-stat .v { font-size: 44px; font-weight: 900; color: var(--navy); line-height: 1.05;
+    font-variant-numeric: tabular-nums; }
+  .nc-stat .v .u { font-size: 24px; font-weight: 700; color: var(--gold-warm); }
+  .nc-stat .k { margin-top: 6px; font-size: 19px; font-weight: 500; line-height: 1.3; color: var(--ink-secondary); }
+
+  /* Study design */
+  .nc-study { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 24px 30px; display: flex; flex-direction: column; }
+  .nc-study .h { margin: 0 0 14px; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .nc-arm { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .nc-arm .box { flex: 1; text-align: center; background: var(--surface-subtle); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 14px; font-size: 21px; font-weight: 700; color: var(--navy); }
+  .nc-arm .box span { display: block; font-size: 18px; font-weight: 400; color: var(--ink-secondary); }
+  .nc-arm .vs { font-size: 18px; font-weight: 800; color: var(--gold-warm); }
+  .nc-rq { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; }
+  .nc-rq + .nc-rq { border-top: 1px solid var(--border); }
+  .nc-rq .tag { flex-shrink: 0; font-size: 17px; font-weight: 800; color: var(--navy-deep);
+    background: var(--gold); border-radius: 6px; padding: 5px 12px; }
+  .nc-rq p { margin: 0; font-size: 22px; font-weight: 400; line-height: 1.38; color: var(--ink-secondary); }
+  .nc-rq p strong { font-weight: 700; color: var(--ink); }
+  .nc-panel { background: var(--navy-deep); border-radius: 12px; padding: 22px 28px; }
+  .nc-panel p { margin: 0; font-size: 24px; font-weight: 500; line-height: 1.45; color: #E6EDF4; }
+  .nc-panel p .accent { color: var(--gold); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>A live copilot at scale: what does AI do to <span class="accent">the humans in the loop</span>?</h1>
+    <p class="title-note" data-reveal>Research &middot; with Noora Health and the Stanford Center for Health Education</p>
+
+    <div class="nc-wrap">
+      <div class="nc-col">
+        <div class="nc-context" data-reveal>
+          <p class="h">The setting</p>
+          <p>Noora Health's <strong>Mobile Care Companion</strong> answers families' health questions over WhatsApp. Since November 2025, a <strong>GenAI copilot</strong> drafts language-matched replies for frontline support staff &mdash; who review, edit, and send every message.</p>
+        </div>
+        <div class="nc-stats">
+          <div class="nc-stat" data-reveal><span class="v">240<span class="u">k</span></span><span class="k">queries per month across India</span></div>
+          <div class="nc-stat" data-reveal><span class="v">80<span class="u">k</span></span><span class="k">users reached monthly</span></div>
+          <div class="nc-stat" data-reveal><span class="v">15<span class="u">k</span></span><span class="k">health facilities</span></div>
+          <div class="nc-stat" data-reveal><span class="v">6</span><span class="k">languages, Hindi to Odia</span></div>
+        </div>
+      </div>
+
+      <div class="nc-col">
+        <div class="nc-study" data-reveal="right">
+          <p class="h">The study &middot; mixed methods</p>
+          <div class="nc-arm">
+            <span class="box">Copilot access<span>9 staff</span></span>
+            <span class="vs">randomized 1:1</span>
+            <span class="box">No copilot<span>9 staff</span></span>
+          </div>
+          <div class="nc-rq">
+            <span class="tag">RQ1</span>
+            <p>How does the copilot change staff <strong>experience</strong> &mdash; trust, agency, everyday practice? Interviews, plus every edit they make to an AI draft as a behavioral trace.</p>
+          </div>
+          <div class="nc-rq">
+            <span class="tag">RQ2</span>
+            <p>Do <strong>conversations</strong> measurably differ? Expert rubrics scaled with a validated LLM judge across the full corpus, in English and Indic languages.</p>
+          </div>
+        </div>
+        <div class="nc-panel" data-reveal="right">
+          <p>The bigger arc: Noora is designing <span class="accent">personalization</span> into its AI products &mdash; this study builds the evidence base for doing it agency-first.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

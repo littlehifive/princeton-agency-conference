@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Two conversations</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .slide { padding-bottom: 44px; position: relative; }
+  h1 { max-width: 1700px; }
+  .cc-row { margin-top: 24px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 560px 560px 1fr; gap: 36px; }
+
+  /* Phone column: chip header + device frame */
+  .ph-col { display: flex; flex-direction: column; min-height: 0; }
+  .ph-chip { align-self: flex-start; font-size: 16px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; border-radius: 6px; padding: 8px 16px; margin-bottom: 14px; }
+  .ph-chip.info { background: var(--border); color: var(--ink-secondary); }
+  .ph-chip.agency { background: var(--gold); color: var(--navy-deep); }
+  .phone { flex: 1; min-height: 0; background: #111418; border-radius: 40px; padding: 12px;
+    box-shadow: 0 12px 28px hsl(210 50% 20% / 0.22); display: flex; flex-direction: column; }
+  .ph-screen { flex: 1; min-height: 0; border-radius: 30px; overflow: hidden;
+    display: flex; flex-direction: column; background: #ECE5DD; }
+  .ph-top { background: #075E54; color: #fff; display: flex; align-items: center;
+    gap: 14px; padding: 14px 18px; flex-shrink: 0; }
+  .ph-top svg.back { width: 20px; height: 20px; stroke: #fff; stroke-width: 2.4;
+    fill: none; flex-shrink: 0; }
+  .ph-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gold);
+    color: var(--navy-deep); font-size: 22px; font-weight: 800; display: flex;
+    align-items: center; justify-content: center; flex-shrink: 0; }
+  .ph-id .n { display: block; font-size: 21px; font-weight: 700; line-height: 1.2; }
+  .ph-id .s { display: block; font-size: 15px; font-weight: 400; opacity: 0.85; }
+  .chat { flex: 1; min-height: 0; padding: 14px 16px 10px; display: flex;
+    flex-direction: column; gap: 10px; overflow: hidden; }
+  .day { align-self: center; font-size: 14px; font-weight: 600; color: #5B6B77;
+    background: #DDE7EC; border-radius: 8px; padding: 4px 12px; }
+  .msg { max-width: 82%; border-radius: 12px; padding: 10px 14px 8px;
+    font-size: 20px; line-height: 1.32; color: #1B1F23;
+    box-shadow: 0 1px 1px hsl(210 30% 30% / 0.15); }
+  .msg.out { align-self: flex-end; background: #DCF8C6; border-bottom-right-radius: 4px; }
+  .msg.in  { align-self: flex-start; background: #FFFFFF; border-bottom-left-radius: 4px; }
+  .msg .meta { margin-top: 3px; font-size: 13px; color: #7C8A96;
+    display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
+  .msg .meta svg { width: 17px; height: 12px; stroke: #53BDEB; stroke-width: 2;
+    fill: none; }
+  .ph-input { flex-shrink: 0; display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px 14px; }
+  .ph-input .pill { flex: 1; background: #fff; border-radius: 22px; padding: 10px 18px;
+    font-size: 17px; color: #98A4AE; }
+  .ph-input .send { width: 42px; height: 42px; border-radius: 50%; background: #075E54;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ph-input .send svg { width: 20px; height: 20px; fill: #fff; }
+
+  /* Callout column */
+  .cc-side { display: flex; flex-direction: column; gap: 22px; min-height: 0; }
+  .co-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 22px 26px; }
+  .co-card .tag { display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
+  .co-card p { margin: 0; font-size: 24px; font-weight: 400; line-height: 1.42;
+    color: var(--ink-secondary); }
+  .co-card p strong { font-weight: 700; color: var(--navy); }
+  .co-card.moves { border-left: 6px solid var(--gold); }
+  .co-move { display: flex; align-items: flex-start; gap: 12px; margin-top: 12px; }
+  .co-move svg { width: 22px; height: 22px; flex-shrink: 0; margin-top: 4px;
+    stroke: var(--gold-warm); stroke-width: 2.6; fill: none;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .co-move p { font-size: 23px; line-height: 1.32; }
+  .co-panel { margin-top: auto; background: var(--navy-deep); border-radius: 12px;
+    padding: 26px 30px; }
+  .co-panel p { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.45; color: #E6EDF4; }
+  .co-panel p .accent { color: var(--gold); font-weight: 700; }
+
+  /* Click-staged reveal */
+  .ph-a .msg, .ph-a .day, .ph-b .msg, .ph-b .day, .cc-side .st {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.4s ease var(--d, 0s), transform 0.4s ease var(--d, 0s); }
+  body.st1 .ph-a .msg, body.st1 .ph-a .day { opacity: 1; transform: none; }
+  body.st2 .ph-b .msg, body.st2 .ph-b .day { opacity: 1; transform: none; }
+  body.st3 .cc-side .st { opacity: 1; transform: none; }
+  body.cc-more { cursor: pointer; }
+  .cc-hint { position: absolute; left: 120px; bottom: 14px; display: flex; align-items: center; gap: 10px;
+    font-size: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);
+    transition: opacity 0.4s ease; }
+  .cc-hint .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); }
+  .cc-hint.done { opacity: 0 !important; }
+  .cc-note { position: absolute; right: 120px; bottom: 14px; font-size: 16px;
+    color: var(--ink-muted); }
+  body.anim-static .ph-a .msg, body.anim-static .ph-a .day,
+  body.anim-static .ph-b .msg, body.anim-static .ph-b .day,
+  body.anim-static .cc-side .st { transition: none !important; }
+  body.anim-static .cc-hint { display: none; }
+  @media print {
+    .ph-a .msg, .ph-a .day, .ph-b .msg, .ph-b .day, .cc-side .st {
+      opacity: 1 !important; transform: none !important; transition: none !important; }
+    .cc-hint { display: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>Same mother, same question &mdash; <span class="accent">two very different conversations</span></h1>
+
+    <div class="cc-row">
+      <div class="ph-col ph-a" data-reveal>
+        <span class="ph-chip info">Information delivery</span>
+        <div class="phone"><div class="ph-screen">
+          <div class="ph-top">
+            <svg class="back" viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg>
+            <span class="ph-avatar">A</span>
+            <div class="ph-id"><span class="n">Amma Health Line</span><span class="s">AI assistant &middot; online</span></div>
+          </div>
+          <div class="chat">
+            <div class="day">Today</div>
+            <div class="msg out" style="--d:0s">hello. my feet r swelling in the evening. i am 7 months pregnant
+              <span class="meta">10:14 <svg viewBox="0 0 20 12"><polyline points="1 6 5 10 11 3"/><polyline points="8 6 12 10 18 3"/></svg></span></div>
+            <div class="msg in" style="--d:0.15s">Hello Priya. Mild evening swelling is common in month 7. It helps to:<br>
+              1. Rest with your feet raised.<br>
+              2. Drink water through the day.<br>
+              3. Avoid standing for long.<br>
+              Go to the clinic if swelling is sudden or comes with headache or blurred vision.
+              <span class="meta">10:15</span></div>
+            <div class="msg out" style="--d:0.3s">ok. can i still do house work
+              <span class="meta">10:22 <svg viewBox="0 0 20 12"><polyline points="1 6 5 10 11 3"/><polyline points="8 6 12 10 18 3"/></svg></span></div>
+            <div class="msg in" style="--d:0.45s">Light housework is fine. Avoid heavy lifting and take short breaks.
+              <span class="meta">10:23</span></div>
+            <div class="msg out" style="--d:0.6s">ok thank you
+              <span class="meta">10:26 <svg viewBox="0 0 20 12"><polyline points="1 6 5 10 11 3"/><polyline points="8 6 12 10 18 3"/></svg></span></div>
+            <div class="msg in" style="--d:0.75s">You are welcome. Message any time.
+              <span class="meta">10:26</span></div>
+          </div>
+          <div class="ph-input"><span class="pill">Message</span>
+            <span class="send"><svg viewBox="0 0 24 24"><path d="M3 11.5 21 3l-6.5 18-2.8-7.2L3 11.5z"/></svg></span></div>
+        </div></div>
+      </div>
+
+      <div class="ph-col ph-b" data-reveal>
+        <span class="ph-chip agency">Agency development</span>
+        <div class="phone"><div class="ph-screen">
+          <div class="ph-top">
+            <svg class="back" viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg>
+            <span class="ph-avatar">A</span>
+            <div class="ph-id"><span class="n">Amma Health Line</span><span class="s">AI assistant &middot; online</span></div>
+          </div>
+          <div class="chat">
+            <div class="day">Today</div>
+            <div class="msg out" style="--d:0s">hello. my feet r swelling in the evening. i am 7 months pregnant
+              <span class="meta">10:14 <svg viewBox="0 0 20 12"><polyline points="1 6 5 10 11 3"/><polyline points="8 6 12 10 18 3"/></svg></span></div>
+            <div class="msg in" style="--d:0.15s">Hello Priya. Evening swelling is common in month 7, and resting with feet raised helps. Have you managed your ANC check-up this month?
+              <span class="meta">10:15</span></div>
+            <div class="msg out" style="--d:0.3s">not yet. clinic is far and my husband takes the scooter for work
+              <span class="meta">10:21 <svg viewBox="0 0 20 12"><polyline points="1 6 5 10 11 3"/><polyline points="8 6 12 10 18 3"/></svg></span></div>
+            <div class="msg in" style="--d:0.45s">That is a real constraint. The 7th-month check matters &mdash; they will look at this swelling and your BP. Which day is he home?
+              <span class="meta">10:22</span></div>
+            <div class="msg out" style="--d:0.6s">thursday, home by 2
+              <span class="meta">10:24 <svg viewBox="0 0 20 12"><polyline points="1 6 5 10 11 3"/><polyline points="8 6 12 10 18 3"/></svg></span></div>
+            <div class="msg in" style="--d:0.75s">Then a plan: Thursday at 3 he drops you at the clinic, and you carry your mother-child card. Shall I remind you at 1?
+              <span class="meta">10:25</span></div>
+            <div class="msg out" style="--d:0.9s">yes ok. thursday 3 pm i will go
+              <span class="meta">10:27 <svg viewBox="0 0 20 12"><polyline points="1 6 5 10 11 3"/><polyline points="8 6 12 10 18 3"/></svg></span></div>
+            <div class="msg in" style="--d:1.05s">Reminder set. You made the plan &mdash; I will just nudge.
+              <span class="meta">10:27</span></div>
+          </div>
+          <div class="ph-input"><span class="pill">Message</span>
+            <span class="send"><svg viewBox="0 0 24 24"><path d="M3 11.5 21 3l-6.5 18-2.8-7.2L3 11.5z"/></svg></span></div>
+        </div></div>
+      </div>
+
+      <div class="cc-side">
+        <div class="co-card st" style="--d:0s">
+          <span class="tag">Left phone</span>
+          <p>The answer is <strong>correct</strong> &mdash; and the conversation ends where it began. Nothing changed in what Priya will do next.</p>
+        </div>
+        <div class="co-card moves st" style="--d:0.15s">
+          <span class="tag">Right phone</span>
+          <p>The same opening becomes <strong>a goal she owns</strong>:</p>
+          <div class="co-move"><svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg><p>Open question surfaces the real barrier</p></div>
+          <div class="co-move"><svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg><p>Concrete if&ndash;then plan around her constraints</p></div>
+          <div class="co-move"><svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg><p>Commitment stated in her own words, plus a reminder</p></div>
+        </div>
+        <div class="co-panel st" style="--d:0.3s">
+          <p>Same model, same facts. The difference is <span class="accent">a design choice</span> &mdash; and social-psychological research tells us which conversational moves build agency.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-hint" id="ccHint" data-reveal><span class="dot"></span><span id="ccHintText">Click or arrow key to reveal &middot; 3 left</span></div>
+    <div class="cc-note" data-reveal>Simulated conversations for illustration, styled after real service transcripts</div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Click-staged reveal: left conversation, then right, then the callouts. */
+(function () {
+  var stage = 0, MAX = 3;
+  var hint = document.getElementById('ccHint');
+  var hintText = document.getElementById('ccHintText');
+  function render() {
+    for (var i = 1; i <= MAX; i++) document.body.classList.toggle('st' + i, stage >= i);
+    document.body.classList.toggle('cc-more', stage < MAX);
+    var left = MAX - stage;
+    if (left === 0) hint.classList.add('done');
+    else hintText.textContent = 'Click or arrow key to reveal · ' + left + ' left';
+  }
+  document.addEventListener('click', function () {
+    if (stage < MAX) { stage++; render(); }
+  });
+  /* Arrow keys drive the stages first; once exhausted they fall through to the
+     deck shell (registered after this listener) and page as usual. */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      if (stage < MAX) { e.preventDefault(); e.stopImmediatePropagation(); stage++; render(); }
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      if (stage > 0) { e.preventDefault(); e.stopImmediatePropagation(); stage--; render(); }
+    }
+  });
+  window.addEventListener('beforeprint', function () { stage = MAX; render(); });
+  if (/[?&]static=1/.test(location.search)) stage = MAX;
+  render();
+})();
+</script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>
