@@ -1,0 +1,12 @@
+{
+  "name": "a2l-intro-deck",
+  "private": true,
+  "scripts": {
+    "shoot": "node shoot.mjs slides _verify",
+    "pdf": "node export_deck_pdf.mjs --slides slides --out a2l-intro-deck.pdf"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "playwright": "^1.61.1"
+  }
+}

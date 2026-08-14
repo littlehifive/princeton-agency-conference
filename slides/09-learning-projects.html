@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Learning projects</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1560px; }
+  h1 .accent { white-space: nowrap; }
+  .lp-lead { margin: 18px 0 0; font-size: 25px; font-weight: 400; line-height: 1.45;
+    color: var(--ink-secondary); max-width: 1560px; }
+  .lp-grid { margin-top: 30px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 22px; }
+  .lp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 24px 28px; display: flex; flex-direction: column; }
+  .lp-card .t { margin: 0 0 10px; font-size: 26px; font-weight: 800; line-height: 1.22; color: var(--navy); }
+  .lp-card .d { margin: 0; font-size: 23px; font-weight: 400; line-height: 1.38; color: var(--ink-secondary); }
+  .lp-card .d strong { font-weight: 700; color: var(--ink); }
+  .slide .footnote { margin-top: 20px; font-size: 22px; color: var(--ink-muted); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow" data-reveal>What the lab ships &middot; Learning projects</p>
+    <h1 data-reveal>Putting the agency literature in <span class="accent">practitioners' hands</span></h1>
+    <p class="lp-lead" data-reveal>Workshops, assistants, and toolkits that help NGO teams design for agency and measure it, built with partners and released for reuse.</p>
+
+    <div class="lp-grid">
+      <div class="lp-card hoverable" data-reveal>
+        <p class="t">Storytelling design workshop</p>
+        <p class="d">A NotebookLM-grounded workshop that helped <strong>Noora Health</strong> teams design a storytelling intervention from the narrative psychology literature.</p>
+      </div>
+      <div class="lp-card hoverable" data-reveal>
+        <p class="t">Agency Intervention Learning Assistant</p>
+        <p class="d">A NotebookLM assistant that answers intervention design questions from TAF's curated agency research library.</p>
+      </div>
+      <div class="lp-card hoverable" data-reveal>
+        <p class="t">Agency/AI University</p>
+        <p class="d">A demo of AI-assisted, self-paced courses that turn TAF playbooks into bite-size modules for NGO teams.</p>
+      </div>
+      <div class="lp-card hoverable" data-reveal>
+        <p class="t">Intervention development playbook</p>
+        <p class="d">A step-by-step playbook for building agency-based interventions, now in progress.</p>
+      </div>
+      <div class="lp-card hoverable" data-reveal>
+        <p class="t">Behavioral-science skills for AI assistants</p>
+        <p class="d">Claude Skills co-developed with <strong>Irrational Labs</strong> that bring behavioral science into everyday AI-assisted work.</p>
+      </div>
+      <div class="lp-card hoverable" data-reveal>
+        <p class="t">Cultural defaults for GenAI</p>
+        <p class="d">Early work on making AI's default interaction styles fit local models of agency, building on <strong>Hazel Markus'</strong> cultural psychology.</p>
+      </div>
+    </div>
+
+    <div class="footnote" data-reveal>
+      <span class="mark"></span>
+      <span>All artifacts are open and reusable across organizations.</span>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

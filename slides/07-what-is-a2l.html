@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What A²L is</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .wi-def { margin: 22px 0 0; font-size: 27px; font-weight: 400; line-height: 1.45;
+    color: var(--ink-secondary); max-width: 1560px; }
+  .wi-def strong { font-weight: 700; color: var(--navy); }
+  .wi-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1; }
+  .wi-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 38px 46px; display: flex; flex-direction: column; }
+  .wi-card .num { font-size: 46px; font-weight: 900; color: var(--gold); line-height: 1;
+    font-variant-numeric: tabular-nums; margin: 0 0 16px; }
+  .wi-card .t { margin: 0 0 14px; font-size: 35px; font-weight: 800; line-height: 1.2; color: var(--navy); }
+  .wi-card .d { margin: 0; font-size: 26px; font-weight: 400; line-height: 1.45; color: var(--ink-secondary); }
+  .wi-card .d strong { font-weight: 700; color: var(--ink); }
+  .wi-card .for { margin: auto 0 0; padding-top: 18px; font-size: 20px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+  .wi-bridge { margin-top: 32px; background: var(--navy-deep); border-radius: 12px; padding: 28px 40px; }
+  .wi-bridge p { margin: 0; font-size: 26px; font-weight: 600; line-height: 1.45; color: var(--white); }
+  .wi-bridge p .accent { color: var(--gold); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow" data-reveal>What A&#178;L is</p>
+    <h1 data-reveal>One lab with <span class="accent">two jobs</span></h1>
+    <p class="wi-def" data-reveal>The Agency &amp; AI Lab (A&#178;L) is a decentralized, virtual, and open research and learning lab. We define <strong>agency</strong> as a person's capability to navigate toward the future they want.</p>
+
+    <div class="wi-grid">
+      <div class="wi-card hoverable" data-reveal>
+        <p class="num">01</p>
+        <p class="t">Design AI for human agency</p>
+        <p class="d">Bring the science of <strong>wise interventions</strong> into AI products through prompting strategies, advisory knowledge bases, and evaluation frameworks, so tools support people to think, choose, and act with confidence.</p>
+        <p class="for">For NGO builders and the researchers who advise them</p>
+      </div>
+      <div class="wi-card hoverable" data-reveal>
+        <p class="num">02</p>
+        <p class="t">Measure how agency evolves with AI</p>
+        <p class="d">Track <strong>internally experienced agency</strong>, what people come to believe about themselves and the AI, and <strong>externally expressed agency</strong>, the goals people set and pursue directly, through systems, and together with others.</p>
+        <p class="for">From surveys, log data, and the conversations themselves</p>
+      </div>
+    </div>
+
+    <div class="wi-bridge" data-reveal>
+      <p>Every A&#178;L project serves both jobs: better designs create the data that better measures need, and <span class="accent">better measures make better designs possible</span>.</p>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

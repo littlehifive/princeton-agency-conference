@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Agency & AI Lab (A²L)</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  body.dark .slide { justify-content: center; position: relative; padding: 130px 150px;
+    background: radial-gradient(120% 120% at 30% 20%, #0B2341, #061A2E 75%); }
+  .topbar { position: absolute; top: 100px; left: 150px; right: 150px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .a2l-chip { font-size: 24px; font-weight: 800; letter-spacing: 0.08em; color: var(--gold);
+    border: 2px solid rgba(241, 181, 5, 0.55); border-radius: 10px; padding: 10px 22px; }
+  .cv-eyebrow { font-size: 24px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--slate-blue); margin: 0 0 36px; }
+  .cv-title { margin: 0; font-size: 116px; font-weight: 800; line-height: 1.04;
+    letter-spacing: -0.02em; color: var(--white); max-width: 1620px; }
+  .cv-title .accent { color: var(--gold); }
+  .cv-sub { margin: 44px 0 0; font-size: 32px; font-weight: 400; line-height: 1.5;
+    color: #C9D4E0; max-width: 1400px; }
+  .cv-sub strong { font-weight: 700; color: var(--white); }
+  .cv-footer { position: absolute; left: 150px; right: 150px; bottom: 96px;
+    border-top: 1px solid rgba(255,255,255,0.18); padding-top: 34px;
+    display: flex; align-items: baseline; justify-content: space-between; }
+  .cv-footer .who { font-size: 26px; font-weight: 600; color: var(--white); }
+  .cv-footer .who span { font-weight: 400; color: #8FA3B8; }
+  .cv-footer .where { font-size: 24px; font-weight: 500; color: #8FA3B8;
+    letter-spacing: 0.06em; text-transform: uppercase; }
+</style>
+</head>
+<body class="dark">
+  <div class="slide">
+    <div class="topbar" data-reveal>
+      <span class="wordmark">The Agency Fund</span>
+      <span class="a2l-chip">A&#178;L</span>
+    </div>
+    <p class="cv-eyebrow" data-reveal>A research and learning lab incubated at The Agency Fund</p>
+    <h1 class="cv-title" data-reveal>The <span class="accent">Agency</span> &amp; AI Lab</h1>
+    <p class="cv-sub" data-reveal><strong>A&#178;L</strong> is a decentralized, virtual, and open lab with two jobs: <strong>design</strong> AI that strengthens human agency in the social sector, and <strong>measure</strong> what AI does to the agency of the people who use it.</p>
+    <div class="cv-footer" data-reveal>
+      <span class="who">Zezhen (Michael) Wu <span>&middot; The Agency Fund &middot; zezhen@agency.fund</span></span>
+      <span class="where">August 2026</span>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

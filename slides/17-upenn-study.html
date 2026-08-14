@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>An LLM judge for human agency</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .us-team { margin-top: 30px; display: flex; gap: 16px; }
+  .us-chip { flex: 1 1 auto; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; box-shadow: var(--shadow-md); padding: 18px 22px; }
+  .us-chip .n { margin: 0 0 5px; font-size: 26px; font-weight: 700; color: var(--navy);
+    line-height: 1.2; white-space: nowrap; }
+  .us-chip .a { margin: 0; font-size: 22px; font-weight: 400; color: var(--ink-muted);
+    line-height: 1.3; white-space: nowrap; }
+  .us-teamnote { margin: 14px 0 0; font-size: 22px; font-weight: 400; color: var(--ink-muted); }
+  .us-idea { margin: 30px 0 0; font-size: 27px; font-weight: 400; line-height: 1.45;
+    color: var(--ink-secondary); max-width: 1650px; }
+  .us-idea strong { font-weight: 700; color: var(--navy); }
+  .us-grid { margin-top: 34px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .us-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 34px 32px; display: flex; flex-direction: column; }
+  .us-card .t { margin: 0 0 14px; font-size: 28px; font-weight: 800; line-height: 1.2; color: var(--navy); }
+  .us-card .q { margin: 0; font-size: 24px; font-weight: 400; line-height: 1.45; color: var(--ink-secondary); }
+  .us-foot { margin-top: 34px; max-width: none; }
+  .us-foot p { margin: 0; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow" data-reveal>Measuring human agency on digital platforms for social impact</p>
+    <h1 data-reveal>An <span class="accent">LLM judge</span> for human agency</h1>
+
+    <div class="us-team">
+      <div class="us-chip" data-reveal>
+        <p class="n">Hamsa Bastani</p>
+        <p class="a">The Wharton School, University of Pennsylvania</p>
+      </div>
+      <div class="us-chip" data-reveal>
+        <p class="n">Osbert Bastani</p>
+        <p class="a">Computer and Information Science, University of Pennsylvania</p>
+      </div>
+      <div class="us-chip" data-reveal>
+        <p class="n">Zezhen (Michael) Wu</p>
+        <p class="a">The Agency Fund</p>
+      </div>
+    </div>
+    <p class="us-teamnote" data-reveal>The same Penn team ran the PNAS 2025 study on AI guardrails and learning.</p>
+
+    <p class="us-idea" data-reveal>Digital platforms already produce conversations, decisions, and, where partners can link them, real outcomes. We design <strong>LLM judges</strong> that read those transcripts against a structured rubric and infer each component of agency, with scores that <strong>admit uncertainty</strong>.</p>
+
+    <div class="us-grid">
+      <div class="us-card hoverable" data-reveal>
+        <p class="t">Intentionality</p>
+        <p class="q">Does the user form plans that serve their goals?</p>
+      </div>
+      <div class="us-card hoverable" data-reveal>
+        <p class="t">Forethought</p>
+        <p class="q">Do they weigh what would happen under different courses of action?</p>
+      </div>
+      <div class="us-card hoverable" data-reveal>
+        <p class="t">Self-reactiveness</p>
+        <p class="q">Do they carry plans out and adapt when new information arrives?</p>
+      </div>
+      <div class="us-card hoverable" data-reveal>
+        <p class="t">Self-reflectiveness</p>
+        <p class="q">Do they look back on outcomes to improve the next decision?</p>
+      </div>
+    </div>
+
+    <div class="footnote us-foot" data-reveal>
+      <span class="mark"></span>
+      <p>Framework grounded in Social Cognitive Theory; it extends to other definitions of agency, including the capability approach.</p>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

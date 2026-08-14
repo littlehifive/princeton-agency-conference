@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Close: The Agency &amp; AI Lab</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  body.dark .slide { justify-content: center; position: relative; padding: 130px 150px;
+    background: radial-gradient(120% 120% at 30% 20%, #0B2341, #061A2E 75%); }
+  .topbar { position: absolute; top: 100px; left: 150px; right: 150px;
+    display: flex; align-items: center; justify-content: space-between; }
+  .a2l-chip { font-size: 24px; font-weight: 800; letter-spacing: 0.08em; color: var(--gold);
+    border: 2px solid rgba(241, 181, 5, 0.55); border-radius: 10px; padding: 10px 22px; }
+  .cl-hero { margin: 0; font-size: 80px; font-weight: 800; line-height: 1.14;
+    letter-spacing: -0.02em; color: var(--white); max-width: 1620px; }
+  .cl-hero .accent { color: var(--gold); }
+  .cl-footer { position: absolute; left: 150px; right: 150px; bottom: 96px;
+    border-top: 1px solid rgba(255,255,255,0.18); padding-top: 34px;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 40px; }
+  .cl-footer a { font-size: 24px; font-weight: 500; color: #6699CC;
+    text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px;
+    white-space: nowrap; }
+  .cl-footer a:hover { color: var(--gold); }
+</style>
+</head>
+<body class="dark">
+  <div class="slide">
+    <div class="topbar" data-reveal>
+      <span class="wordmark">The Agency Fund</span>
+      <span class="a2l-chip">A&#178;L</span>
+    </div>
+    <h1 class="cl-hero" data-reveal="scale">Let's build AI that<br>strengthens human agency,<br>and <span class="accent">prove that it does</span>.</h1>
+    <div class="cl-footer" data-reveal>
+      <a href="mailto:zezhen@agency.fund" target="_blank" rel="noopener">zezhen@agency.fund</a>
+      <a href="https://www.agency.fund" target="_blank" rel="noopener">www.agency.fund</a>
+      <a href="https://theagencyfund.substack.com/p/measuring-agency-in-a-digital-context" target="_blank" rel="noopener">Blog: Measuring agency in a digital context</a>
+      <a href="https://agency-fund.github.io/taf-nairobi-agency-measurement-slides" target="_blank" rel="noopener">Workshop deck</a>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

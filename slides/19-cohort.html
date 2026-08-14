@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The study cohort</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .co-groups { margin-top: 30px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .co-group { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+  .co-domain { margin: 0; font-size: 21px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .co-card { flex: 1; min-height: 0; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; box-shadow: var(--shadow-md); padding: 18px 22px;
+    display: flex; gap: 16px; align-items: center; }
+  .co-chip { width: 72px; height: 72px; border-radius: 12px; background: var(--navy-deep);
+    color: var(--white); font-size: 26px; font-weight: 800; letter-spacing: 0.02em;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .co-body { min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+  .co-name { margin: 0; font-size: 23px; font-weight: 800; line-height: 1.25; color: var(--navy); }
+  .co-name span { font-size: 22px; font-weight: 400; color: var(--ink-muted); white-space: nowrap; }
+  .co-desc { margin: 5px 0 0; font-size: 22px; font-weight: 400; line-height: 1.35;
+    color: var(--ink-secondary); }
+  .co-desc .nb { white-space: nowrap; }
+  .co-stat { margin: 9px 0 0; display: flex; align-items: baseline; gap: 12px; }
+  .co-stat .n { font-size: 32px; font-weight: 900; line-height: 1; color: var(--navy);
+    font-variant-numeric: tabular-nums; }
+  .co-stat .l { font-size: 22px; font-weight: 400; color: var(--ink-muted); }
+  /* Tall spotlight card (single-org column) */
+  .co-tall { flex-direction: column; align-items: stretch; padding: 30px 32px; }
+  .co-tall .co-head { display: flex; gap: 18px; align-items: center; }
+  .co-tall .co-chip { width: 80px; height: 80px; font-size: 28px; }
+  .co-tall .co-name { font-size: 27px; }
+  .co-tall .co-desc { margin-top: 18px; font-size: 23px; line-height: 1.4; }
+  .co-tall .co-stat { margin-top: auto; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .co-tall .co-stat .n { font-size: 80px; }
+  .co-tall .co-stat .l { font-size: 23px; line-height: 1.35; color: var(--ink-secondary); }
+  .co-kicker { margin-top: 26px; background: var(--navy-deep); border-radius: 12px; padding: 26px 40px; }
+  .co-kicker p { margin: 0; font-size: 26px; font-weight: 600; line-height: 1.45; color: var(--white); }
+  .co-kicker p .accent { color: var(--gold); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow" data-reveal>The study cohort</p>
+    <h1 data-reveal><span class="accent">Six partners</span>, three domains, five countries</h1>
+
+    <div class="co-groups">
+      <div class="co-group">
+        <p class="co-domain" data-reveal>Health</p>
+        <div class="co-card co-tall hoverable" data-reveal>
+          <div class="co-head">
+            <div class="co-chip">JH</div>
+            <p class="co-name">Jacaranda Health <span>&middot; Kenya</span></p>
+          </div>
+          <p class="co-desc">PROMPTS, maternal-health SMS with AI triage.</p>
+          <div class="co-stat">
+            <span class="n">3.8M+</span>
+            <span class="l">mothers reached with 22 county governments</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="co-group">
+        <p class="co-domain" data-reveal>Education</p>
+        <div class="co-card hoverable" data-reveal>
+          <div class="co-chip">NE</div>
+          <div class="co-body">
+            <p class="co-name">Nova Escola <span>&middot; Brazil</span></p>
+            <p class="co-desc">WhatsApp AI lesson planner on the national curriculum.</p>
+            <div class="co-stat">
+              <span class="n">150K</span>
+              <span class="l">teachers in year one</span>
+            </div>
+          </div>
+        </div>
+        <div class="co-card hoverable" data-reveal>
+          <div class="co-chip">TAP</div>
+          <div class="co-body">
+            <p class="co-name">The Apprentice Project <span>&middot; India</span></p>
+            <p class="co-desc">TAP Buddy project-based learning for ages 9 to 17, now adding <span class="nb">mother-tongue</span> voice AI.</p>
+          </div>
+        </div>
+        <div class="co-card hoverable" data-reveal>
+          <div class="co-chip">U</div>
+          <div class="co-body">
+            <p class="co-name">Udhyam Learning Foundation <span>&middot; India</span></p>
+            <p class="co-desc">AI help bot inside a real-business entrepreneurship program.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="co-group">
+        <p class="co-domain" data-reveal>Livelihoods</p>
+        <div class="co-card hoverable" data-reveal>
+          <div class="co-chip">DG</div>
+          <div class="co-body">
+            <p class="co-name">Digital Green <span>&middot; Kenya, Ethiopia, India</span></p>
+            <p class="co-desc">FarmerChat agronomy advisor.</p>
+            <div class="co-stat">
+              <span class="n">1.3M</span>
+              <span class="l">farmers</span>
+            </div>
+          </div>
+        </div>
+        <div class="co-card hoverable" data-reveal>
+          <div class="co-chip">KA</div>
+          <div class="co-body">
+            <p class="co-name">Kabakoo Academies <span>&middot; Mali</span></p>
+            <p class="co-desc">WhatsApp AI mentor with video reflections, often in Bambara.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="co-kicker" data-reveal>
+      <p>Every partner already runs an AI product with real users and real stakes. Together they give the study conversations in <span class="accent">text, voice, and video</span> across languages and cultures.</p>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

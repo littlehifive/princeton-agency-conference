@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The cohort in detail: 1 of 2</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .pa-eyebrow { margin-bottom: 18px; }
+  .pa-title { font-size: 48px; max-width: 1680px; }
+  .pa-grid { margin-top: 28px; flex: 1; min-height: 0;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+  .pa-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 28px 30px; min-height: 0;
+    display: flex; flex-direction: column; }
+  .pa-head { display: flex; align-items: center; gap: 18px; min-height: 76px;
+    padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+  .pa-chip { width: 66px; height: 66px; border-radius: 12px; background: var(--navy-deep);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 25px; font-weight: 800; color: var(--white); letter-spacing: 0.02em; }
+  .pa-org .n { margin: 0; font-size: 23px; font-weight: 800; line-height: 1.16;
+    text-transform: uppercase; letter-spacing: 0.01em; color: var(--navy); }
+  .pa-org .c { margin: 5px 0 0; font-size: 16px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .pa-sec { padding-top: 16px; }
+  .pa-sec + .pa-sec { margin-top: 16px; border-top: 1px solid var(--border); }
+  .pa-sec .k { margin: 0 0 7px; font-size: 16px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .pa-sec .v { margin: 0; font-size: 22px; font-weight: 400; line-height: 1.4;
+    color: var(--ink-secondary); font-variant-numeric: tabular-nums; }
+  .pa-sec .v strong { font-weight: 700; color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow pa-eyebrow" data-reveal>The cohort in detail &middot; 1 of 2</p>
+    <h1 class="pa-title" data-reveal>What each partner brings, and what we will <span class="accent">learn together</span></h1>
+
+    <div class="pa-grid">
+      <div class="pa-card hoverable" data-reveal>
+        <div class="pa-head">
+          <span class="pa-chip">DG</span>
+          <div class="pa-org">
+            <p class="n">Digital Green</p>
+            <p class="c">Kenya &middot; Ethiopia &middot; India</p>
+          </div>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Product</p>
+          <p class="v"><strong>FarmerChat</strong> answers smallholders' agronomy questions; version 2 adds visual learning cards and profile-based personalization.</p>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Data</p>
+          <p class="v"><strong>1.3 million users</strong> and hundreds of thousands of conversations, linkable to adoption and yield surveys from ongoing RCTs.</p>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Study</p>
+          <p class="v">Find agency signals among power users, track how they shift from version 1 to version 2, and test whether they predict real adoption, alongside the World Bank MAGNET agency measures Digital Green already uses.</p>
+        </div>
+      </div>
+
+      <div class="pa-card hoverable" data-reveal>
+        <div class="pa-head">
+          <span class="pa-chip">JH</span>
+          <div class="pa-org">
+            <p class="n">Jacaranda Health</p>
+            <p class="c">Kenya</p>
+          </div>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Product</p>
+          <p class="v"><strong>PROMPTS</strong> supports new and expecting mothers over two-way SMS with answers, AI risk triage, and referrals into care.</p>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Data</p>
+          <p class="v">Conversation logs from a service that has reached <strong>3.8M+ mothers</strong>, linkable to routine surveys and care-visit records.</p>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Study</p>
+          <p class="v">Read how mothers navigate care pathways, link those signals to visits, and design proactive nudges for mothers who do not yet know what to ask.</p>
+        </div>
+      </div>
+
+      <div class="pa-card hoverable" data-reveal>
+        <div class="pa-head">
+          <span class="pa-chip">KA</span>
+          <div class="pa-org">
+            <p class="n">Kabakoo Academies</p>
+            <p class="c">Mali</p>
+          </div>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Product</p>
+          <p class="v">A <strong>WhatsApp AI mentor</strong> guides youth upskilling; learners answer curriculum prompts with short reflection videos, often in Bambara.</p>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Data</p>
+          <p class="v">About <strong>5,000 learners, 15,000 reflections</strong>, and 4,000 video transcripts. A waitlist RCT already showed gains of 0.14 to 0.25 SD in growth mindset.</p>
+        </div>
+        <div class="pa-sec">
+          <p class="k">Study</p>
+          <p class="v">Mine reflections for agency signals and connect them to income and community standing years later, under strict privacy protections for at-risk youth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

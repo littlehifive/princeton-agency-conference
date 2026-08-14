@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Nairobi workshop</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .nw-wrap { margin-top: 48px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 1.2fr 1fr; gap: 60px; }
+  .nw-steps { display: flex; flex-direction: column; }
+  .nw-step { display: flex; gap: 30px; align-items: flex-start; padding: 44px 0; }
+  .nw-step + .nw-step { border-top: 1px solid var(--border); }
+  .nw-step:first-child { padding-top: 6px; }
+  .nw-num { font-size: 46px; font-weight: 900; color: var(--gold); line-height: 1;
+    flex-shrink: 0; width: 50px; font-variant-numeric: tabular-nums; }
+  .nw-text { margin: 0; font-size: 28px; font-weight: 400; line-height: 1.5; color: var(--ink); }
+  .nw-text strong { font-weight: 700; color: var(--navy); }
+  .nw-side { display: flex; flex-direction: column; justify-content: flex-start; gap: 30px; padding-top: 6px; }
+  .nw-debrief { background: var(--surface); border: 1px solid var(--border);
+    border-left: 6px solid var(--gold); border-radius: 12px; box-shadow: var(--shadow-md);
+    padding: 36px 40px; }
+  .nw-debrief .t { margin: 0 0 14px; font-size: 29px; font-weight: 800; line-height: 1.25; color: var(--navy); }
+  .nw-debrief .d { margin: 0; font-size: 25px; font-weight: 400; line-height: 1.5; color: var(--ink-secondary); }
+  .nw-kicker { background: var(--navy-deep); border-radius: 12px; padding: 34px 40px; }
+  .nw-kicker p { margin: 0; font-size: 27px; font-weight: 600; line-height: 1.5; color: var(--white); }
+  .nw-kicker p .accent { color: var(--gold); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow" data-reveal>Field-tested &middot; Nairobi onsite &middot; July 2026</p>
+    <h1 data-reveal>We put the method <span class="accent">in a room</span></h1>
+
+    <div class="nw-wrap">
+      <div class="nw-steps">
+        <div class="nw-step" data-reveal>
+          <span class="nw-num">1</span>
+          <p class="nw-text">Teams of grantees, funders, and staff coded <strong>30 synthetic AI-assistant conversations</strong> from education, health, and agriculture.</p>
+        </div>
+        <div class="nw-step" data-reveal>
+          <span class="nw-num">2</span>
+          <p class="nw-text">Everyone labeled the same <strong>binary rubric</strong>, built on the agency flywheel: motivation, action and choice, links to real-world outcomes, and updated mental models.</p>
+        </div>
+        <div class="nw-step" data-reveal>
+          <span class="nw-num">3</span>
+          <p class="nw-text"><strong>Calibrate</strong> showed people-vs-people agreement live. Then an <strong>LLM judge</strong> ran the exact same rubric on the same conversations.</p>
+        </div>
+      </div>
+
+      <div class="nw-side">
+        <div class="nw-debrief" data-reveal="right">
+          <p class="t">What the room learned</p>
+          <p class="d">Binary questions force choices on borderline cases, and those forced choices surface the definitional debates that actually matter for measurement.</p>
+        </div>
+        <div class="nw-kicker" data-reveal="right">
+          <p>Once a rubric earns agreement between people, an AI can apply it consistently across <span class="accent">thousands of conversations</span>. That is what makes agency measurement scale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>
