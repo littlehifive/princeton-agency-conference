@@ -29,6 +29,12 @@
     stroke: var(--gold-warm); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .nb-src.more { color: var(--ink-muted); font-style: italic; }
   .nb-chat { padding: 22px 26px; display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+  .nb-ask { margin-top: auto; display: flex; align-items: center; gap: 12px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    padding: 12px 20px; font-size: 19px; color: var(--ink-muted); }
+  .nb-ask .go { margin-left: auto; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--navy-deep); display: flex; align-items: center; justify-content: center; }
+  .nb-ask .go svg { width: 16px; height: 16px; fill: #fff; }
   .nb-q { align-self: flex-end; max-width: 88%; background: var(--navy-deep); color: #E6EDF4;
     border-radius: 14px 14px 4px 14px; padding: 14px 20px; font-size: 21px; line-height: 1.38; }
   .nb-a { align-self: flex-start; max-width: 94%; background: var(--surface-subtle);
@@ -75,6 +81,8 @@
           <div class="nb-chat">
             <div class="nb-q">We run a maternal-health program in Bihar. Which agency interventions have worked in health contexts, and what would adapting one take?</div>
             <div class="nb-a">Three intervention families have strong evidence in health settings: <strong>implementation-intention prompts</strong> for care-seeking <span class="cite">1</span>, <strong>values affirmation</strong> before threatening health information <span class="cite">2</span>, and <strong>norm-based framing</strong> of new practices <span class="cite">3</span>. For a WhatsApp program, the closest analog is the if&ndash;then planning protocol in <span class="cite">1</span> &mdash; adaptation would mean localizing the barriers list and pre-testing the framing with your field team.</div>
+            <div class="nb-ask"><span>Ask about your sources&hellip;</span>
+              <span class="go"><svg viewBox="0 0 24 24"><path d="M3 11.5 21 3l-6.5 18-2.8-7.2L3 11.5z"/></svg></span></div>
           </div>
         </div>
       </div>
