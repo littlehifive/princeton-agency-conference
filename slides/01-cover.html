@@ -9,8 +9,14 @@
 <style>
   body.dark .slide { justify-content: center; position: relative; padding: 130px 150px;
     background: radial-gradient(120% 120% at 30% 20%, #0B2341, #061A2E 75%); }
+  .slide::before { content: ""; position: absolute; inset: 0; z-index: 0;
+    background: url("assets/title-page.jpg") center / cover no-repeat; opacity: 0.5; }
+  .slide::after { content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(96deg, rgba(6, 26, 46, 0.95) 22%, rgba(6, 26, 46, 0.66) 62%, rgba(8, 30, 52, 0.42) 100%); }
+  .slide > * { position: relative; z-index: 2; }
   .topbar { position: absolute; top: 100px; left: 150px; right: 150px;
     display: flex; align-items: center; justify-content: space-between; }
+  .tf-logo { height: 48px; width: auto; display: block; }
   .a2l-chip { font-size: 24px; font-weight: 800; letter-spacing: 0.08em; color: var(--gold);
     border: 2px solid rgba(241, 181, 5, 0.55); border-radius: 10px; padding: 10px 22px; }
   .cv-eyebrow { font-size: 24px; font-weight: 600; letter-spacing: 0.14em;
@@ -33,7 +39,7 @@
 <body class="dark">
   <div class="slide">
     <div class="topbar" data-reveal>
-      <span class="wordmark">The Agency Fund</span>
+      <img class="tf-logo" src="assets/agency-fund-logo-white.svg" alt="The Agency Fund">
       <span class="a2l-chip">A&#178;L</span>
     </div>
     <p class="cv-eyebrow" data-reveal>A research and learning lab incubated at The Agency Fund</p>
