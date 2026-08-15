@@ -20,33 +20,27 @@
   // One entry per slide, in display order. The label appears in the overview wall
   // and the present-mode counter. Edit this list to match the files in slides/.
   window.DECK_MANIFEST = [
-    { file: "slides/01-cover.html",             label: "Cover" },
-    { file: "slides/02-accelerator-map.html",   label: "The accelerator map" },
-    { file: "slides/03-two-gaps.html",          label: "Two gaps" },
-    { file: "slides/04-chat-contrast.html",     label: "Two conversations" },
-    { file: "slides/05-flywheel.html",          label: "The agency flywheel" },
-    { file: "slides/06-both-ways.html",         label: "Research evidence" },
-    { file: "slides/07-divider-learning.html",  label: "Part 2 · Learning projects" },
-    { file: "slides/08-portfolio-overview.html",label: "Three bodies of work" },
-    { file: "slides/09-notebooklm.html",        label: "NotebookLM assistants" },
-    { file: "slides/10-culture-paper.html",     label: "Evaluating AI Across Cultures" },
-    { file: "slides/11-irrational-labs.html",   label: "Behavioral-science skills" },
-    { file: "slides/12-divider-design.html",    label: "Part 3 · Designing for agency" },
-    { file: "slides/13-noora-copilot.html",     label: "The Noora copilot study" },
-    { file: "slides/14-open-opportunity.html",  label: "The open opportunity" },
-    { file: "slides/15-divider-measure.html",   label: "Part 4 · Measuring agency" },
-    { file: "slides/16-two-by-two.html",        label: "The 2x2 framework" },
-    { file: "slides/17-four-levels.html",       label: "Four-level evaluation" },
-    { file: "slides/18-three-steps.html",       label: "Three steps" },
-    { file: "slides/19-nairobi-workshop.html",  label: "Nairobi workshop" },
-    { file: "slides/20-divider-flagship.html",  label: "Part 5 · Flagship study" },
-    { file: "slides/21-upenn-study.html",       label: "The Penn study" },
-    { file: "slides/22-method-pipeline.html",   label: "Measurement pipeline" },
-    { file: "slides/23-cohort.html",            label: "The six-NGO cohort" },
-    { file: "slides/24-partners-a.html",        label: "Partners: DG · JH · Kabakoo" },
-    { file: "slides/25-partners-b.html",        label: "Partners: NE · TAP · Udhyam" },
-    { file: "slides/26-join.html",              label: "Join the lab" },
-    { file: "slides/27-close.html",             label: "Close" },
+    { file: "slides/01-cover.html",              label: "Cover" },
+    { file: "slides/02-both-ways.html",          label: "Research evidence" },
+    { file: "slides/03-accelerator-map.html",    label: "The accelerator map" },
+    { file: "slides/04-two-gaps.html",           label: "Two gaps" },
+    { file: "slides/05-chat-contrast.html",      label: "Two conversations" },
+    { file: "slides/06-flywheel.html",           label: "The agency flywheel" },
+    { file: "slides/07-divider-learning.html",   label: "Part 2 · Learning projects" },
+    { file: "slides/08-notebooklm.html",         label: "NotebookLM assistants" },
+    { file: "slides/09-culture-paper.html",      label: "Evaluating AI Across Cultures" },
+    { file: "slides/10-irrational-labs.html",    label: "Behavioral-science skills" },
+    { file: "slides/11-divider-design.html",     label: "Part 3 · Designing for agency" },
+    { file: "slides/12-noora-copilot.html",      label: "The Noora copilot study" },
+    { file: "slides/13-three-papers.html",       label: "Three papers, one call" },
+    { file: "slides/14-divider-measure.html",    label: "Part 4 · Measuring agency" },
+    { file: "slides/15-jigsaw-blog.html",        label: "The Jigsaw guide" },
+    { file: "slides/16-two-by-two.html",         label: "The 2x2 framework" },
+    { file: "slides/17-four-levels.html",        label: "Four-level evaluation" },
+    { file: "slides/18-three-steps.html",        label: "Three steps" },
+    { file: "slides/19-measure-in-the-wild.html",label: "The flagship study" },
+    { file: "slides/20-cohort-plans.html",       label: "The six-NGO cohort" },
+    { file: "slides/21-close.html",              label: "Close" },
   ];
   window.DECK_WIDTH = 1920;
   window.DECK_HEIGHT = 1080;
@@ -239,10 +233,16 @@
   const OVERVIEW = qp || window.DECK_OVERVIEW || ((new Date().getSeconds() % 5 < 2) ? 'gallery' : 'grid');
   document.body.setAttribute('data-ov', OVERVIEW === 'gallery' ? 'gallery' : 'grid');
 
+  // Keep keyboard focus inside the slide iframe while presenting, so arrow keys
+  // drive in-slide animations immediately (no click into the slide needed).
+  // Slides forward unconsumed nav keys back up via postMessage (deckKey).
+  function focusSlide() {
+    try { frame.focus(); if (frame.contentWindow) frame.contentWindow.focus(); } catch (_) {}
+  }
   function setMode(mode) {
     document.body.setAttribute('data-mode', mode);
-    if (mode === 'present') { fit(); show(current); }
-    else { requestAnimationFrame(buildOverview); }
+    if (mode === 'present') { fit(); show(current); focusSlide(); }
+    else { try { frame.blur(); } catch (_) {} requestAnimationFrame(buildOverview); }
   }
 
   /* ─ media (thumbnail preferred, else iframe) ─ */
@@ -372,6 +372,7 @@
   };
   frame.addEventListener('load', () => {
     setTimeout(unveil, 600); // safety: never stay hidden
+    if (document.body.getAttribute('data-mode') === 'present') focusSlide();
   });
   window.addEventListener('message', (e) => {
     const d = e.data || {};
@@ -406,8 +407,8 @@
       default: if (e.key >= '1' && e.key <= '9') { const i = parseInt(e.key, 10) - 1; if (i < deck.length) { e.preventDefault(); show(i); } }
     }
   });
-  document.getElementById('navL').addEventListener('click', prev);
-  document.getElementById('navR').addEventListener('click', next);
+  document.getElementById('navL').addEventListener('click', () => { prev(); focusSlide(); });
+  document.getElementById('navR').addEventListener('click', () => { next(); focusSlide(); });
   document.getElementById('startBtn').addEventListener('click', () => setMode('present'));
   document.getElementById('overviewBtn').addEventListener('click', () => setMode('overview'));
   let rT;

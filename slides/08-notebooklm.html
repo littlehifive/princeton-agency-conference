@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A library that answers back</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .shot-wrap { margin-top: 28px; flex: 1; min-height: 0; display: flex;
+    align-items: center; justify-content: center; }
+  .shot-frame { width: 1460px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; box-shadow: 0 10px 26px hsl(210 50% 20% / 0.14); }
+  .shot-bar { display: flex; align-items: center; gap: 10px; padding: 13px 20px;
+    border-bottom: 1px solid var(--border); background: var(--surface-subtle); }
+  .shot-bar .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--border); }
+  .shot-bar .url { margin-left: 12px; font-size: 17px; font-weight: 600; color: var(--ink-muted); }
+  .shot-frame img { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>A research library that <span class="accent">answers back</span></h1>
+    <p class="title-note" data-reveal>Learning projects &middot; Google NotebookLM assistants built at The Agency Fund, open to any NGO team</p>
+
+    <div class="shot-wrap" data-reveal>
+      <div class="shot-frame">
+        <div class="shot-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="url">notebooklm.google.com &middot; Agency-Based Intervention Assistant</span>
+        </div>
+        <img src="assets/notebooklm-agency-intervention.png"
+             alt="Screenshot of the Agency-Based Intervention NotebookLM assistant, with the curated source library on the left and a cited answer about agency interventions on the right">
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

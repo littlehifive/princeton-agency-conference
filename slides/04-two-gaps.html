@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Two gaps</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1660px; }
+  .tg-grid { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; min-height: 0;
+    align-content: center; }
+  .tg-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    box-shadow: var(--shadow-md); padding: 40px 46px 36px; display: flex; flex-direction: column; min-height: 0; }
+  .tg-top { display: flex; align-items: center; gap: 24px; margin-bottom: 26px; }
+  .tg-icon { width: 104px; height: 104px; border-radius: 10px; background: #F3F6F9; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; flex: none; }
+  .tg-icon svg { width: 72px; height: 72px; display: block; }
+  .tg-head { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-muted); }
+  .tg-lead { margin: 0; font-size: 32px; font-weight: 850; line-height: 1.27; color: var(--navy); }
+  .tg-d { margin: 20px 0 0; font-size: 24px; font-weight: 400; line-height: 1.45; color: var(--ink-secondary); }
+  .tg-d strong { color: var(--navy); font-weight: 800; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>Working with these organizations surfaced <span class="accent">two gaps related to human agency</span> in AI product work</h1>
+
+    <div class="tg-grid">
+      <div class="tg-card design" data-reveal>
+        <div class="tg-top">
+          <div class="tg-icon" aria-hidden="true">
+            <svg viewBox="0 0 72 72" fill="none">
+              <path d="M14 8h32a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8H30l-10 9v-9h-6a8 8 0 0 1-8-8V16a8 8 0 0 1 8-8z" stroke="#003366" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M17 21h26M17 30h15" stroke="#003366" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M39 62l3-10.5L58.5 35l7.5 7.5L49.5 59 39 62z" stroke="#F1B505" stroke-width="5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="tg-head">The Design Gap</p>
+          </div>
+        </div>
+        <p class="tg-lead">AI products are built to optimize service delivery, not explicitly to strengthen people’s agency.</p>
+        <p class="tg-d">Despite AI's potential to strengthen human agency, NGO products often treat agency as a byproduct rather than a design objective. <br><br> Decades of behavioral science research identify agency as a key mechanism for improving development outcomes, yet it is rarely <strong>built into AI design, testing, or iteration</strong>.</p>
+      </div>
+
+      <div class="tg-card measure" data-reveal>
+        <div class="tg-top">
+          <div class="tg-icon" aria-hidden="true">
+            <svg viewBox="0 0 72 72" fill="none">
+              <path d="M14 8h32a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8H30l-10 9v-9h-6a8 8 0 0 1-8-8V16a8 8 0 0 1 8-8z" stroke="#003366" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M16 30l8-8 7 5 10-10" stroke="#003366" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="47" cy="47" r="11.5" stroke="#F1B505" stroke-width="5"/>
+              <path d="M56 56l10 10" stroke="#F1B505" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="tg-head">The Measurement Gap</p>
+          </div>
+        </div>
+        <p class="tg-lead">AI products are underused as windows into how agency evolves.</p>
+        <p class="tg-d">Many products may not generate as many signals of agency as tools like ChatGPT or Claude Code do. When signals exist, they often come from power users, and the field lacks a shared standard or analytical tools for <strong>finding, gathering, and interpreting agency</strong> inside human-AI traces.</p>
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

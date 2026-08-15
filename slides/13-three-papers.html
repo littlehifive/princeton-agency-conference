@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Research evidence on agency</title>
+<title>Three papers, one call</title>
 <link rel="stylesheet" href="shared/fonts.css">
 <link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   h1 { max-width: 1680px; }
-  .bw-grid { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; flex: 1; min-height: 0; }
+  .bw-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; flex: 1; min-height: 0; }
   /* Flip cards */
   .flip { position: relative; perspective: 1800px; cursor: pointer; min-height: 0; }
   .flip-inner { position: absolute; inset: 0; transform-style: preserve-3d;
@@ -27,53 +27,45 @@
   /* Card content */
   .bw-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .bw-chip { font-size: 16px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-    border-radius: 6px; padding: 5px 13px; flex-shrink: 0; }
-  .bw-chip.up { background: var(--gold); color: var(--navy-deep); }
-  .bw-chip.down { background: #B3361F; color: var(--white); }
+    border-radius: 6px; padding: 5px 13px; flex-shrink: 0; background: var(--gold); color: var(--navy-deep); }
   .bw-src { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: 0.06em;
     text-transform: uppercase; color: var(--ink-muted); }
-  .bw-lead { margin: 6px 0 0; font-size: 28px; font-weight: 800; line-height: 1.28; color: var(--navy); }
+  .bw-lead { margin: 6px 0 0; font-size: 29px; font-weight: 800; line-height: 1.28; color: var(--navy); }
   .bw-find { margin: 0; font-size: 21px; line-height: 1.46; color: var(--ink); }
   .bw-find strong { color: var(--navy); }
-  .bw-nums { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border);
-    display: flex; gap: 34px; }
-  .bw-num .n { margin: 0; font-size: 52px; font-weight: 900; line-height: 1.05;
-    font-variant-numeric: tabular-nums; color: var(--navy); }
-  .bw-num .n.bad { color: #B3361F; }
-  .bw-num .l { margin: 4px 0 0; font-size: 17px; line-height: 1.3; color: var(--ink-secondary); }
+  .bw-au { margin: 0; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border);
+    font-size: 20px; font-weight: 600; line-height: 1.35; color: var(--ink-secondary); }
   .bw-panel { margin-top: 24px; background: var(--navy-deep); border-radius: 8px; padding: 22px 30px; }
-  .bw-panel p { margin: 0; font-size: 21px; font-weight: 600; line-height: 1.42; color: var(--white); }
+  .bw-panel p { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.42; color: var(--white); }
   .bw-panel p .accent { color: var(--gold); }
-  .footnote { margin-top: 22px; font-size: 20px; }
+  .footnote { margin-top: 22px; font-size: 19px; }
   .footnote a { color: #6699CC; text-decoration: underline; text-underline-offset: 3px; }
   @media print { .flip.flipped .flip-inner { transform: none; } }
 </style>
 </head>
 <body>
   <div class="slide">
-    <h1 data-reveal>Studies show AI can <span class="accent">expand</span> agency, and also hamper it</h1>
+    <h1 data-reveal>Three papers, one call: put <span class="accent">psychology inside AI design and evaluation</span></h1>
+    <p class="title-note" data-reveal>Research &middot; the agenda the lab builds on</p>
 
     <div class="bw-grid">
       <div class="flip" data-reveal>
         <div class="flip-inner">
           <div class="face front">
             <div class="bw-head">
-              <span class="bw-chip up">Can expand</span>
-              <p class="bw-src">Jigsaw at Google &middot; ethnography</p>
+              <span class="bw-chip">Design</span>
+              <p class="bw-src">Nature Reviews Psychology &middot; 2026</p>
             </div>
-            <p class="bw-lead">Substantial engagement lets researchers see agency signals beyond task completion.</p>
-            <div class="bw-nums">
-              <div class="bw-num"><p class="n">60</p><p class="l">advanced AI users interviewed</p></div>
-              <div class="bw-num"><p class="n">3</p><p class="l">countries: US, Singapore, Germany</p></div>
-            </div>
+            <p class="bw-lead">Psychologists must be involved in building conversational AI chatbots.</p>
+            <p class="bw-au">Xuan Zhao &middot; Stanford University</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip to see details</div>
           </div>
           <div class="face back">
             <div class="bw-head">
-              <span class="bw-chip up">Can expand</span>
-              <p class="bw-src">The full finding</p>
+              <span class="bw-chip">Design</span>
+              <p class="bw-src">The core argument</p>
             </div>
-            <p class="bw-find">In a higher-resource AI use setting with advanced users, people stayed with tools that <strong>made them feel more capable</strong>, even when the tools made mistakes. The study points to five ways AI can expand agency: instrumental, cognitive, affective, relational, and structural.</p>
+            <p class="bw-find">Chatbots could democratize personalized support, or deepen isolation and risk. The difference is whether <strong>psychological theory and methods are embedded</strong> in design, evaluation, and monitoring, with concrete roles for psychologists across that whole pipeline.</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip back</div>
           </div>
         </div>
@@ -83,22 +75,19 @@
         <div class="flip-inner">
           <div class="face front">
             <div class="bw-head">
-              <span class="bw-chip down">Can hamper</span>
-              <p class="bw-src">Bastani et al. &middot; PNAS field RCT</p>
+              <span class="bw-chip">Alignment</span>
+              <p class="bw-src">AI &amp; Society &middot; 2026</p>
             </div>
-            <p class="bw-lead">A field study shows that engagement can look productive while learning agency erodes.</p>
-            <div class="bw-nums">
-              <div class="bw-num"><p class="n">+48%</p><p class="l">practice scores, AI in hand</p></div>
-              <div class="bw-num"><p class="n bad">&minus;17%</p><p class="l">exam scores, AI removed</p></div>
-            </div>
+            <p class="bw-lead">Alignment means integrating AI into human agency, not just learning our values.</p>
+            <p class="bw-au">Sa&scaron;a Josifovi&cacute; &amp; J&ouml;rg Noller</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip to see details</div>
           </div>
           <div class="face back">
             <div class="bw-head">
-              <span class="bw-chip down">Can hamper</span>
-              <p class="bw-src">The full finding</p>
+              <span class="bw-chip">Alignment</span>
+              <p class="bw-src">The core argument</p>
             </div>
-            <p class="bw-find">A ChatGPT-style math tutor boosted practice scores by 48%, but students scored <strong>17% below the control group</strong> once the AI was removed. A guardrailed tutor that offered hints rather than solutions eliminated the harm, yet students using either tool remained unaware of the gap between feeling supported and actually learning.</p>
+            <p class="bw-find">AI should be understood as an <strong>extension of human purposiveness</strong>, grounded in practical autonomy: the human capacity to act for reasons and take responsibility. Alignment then runs through a normative interface connecting machine behavior to human norms, with humans remaining the ultimate bearers of responsibility.</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip back</div>
           </div>
         </div>
@@ -108,22 +97,19 @@
         <div class="flip-inner">
           <div class="face front">
             <div class="bw-head">
-              <span class="bw-chip down">Can hamper</span>
-              <p class="bw-src">Shaw and Nave &middot; 3 experiments</p>
+              <span class="bw-chip">Evaluation</span>
+              <p class="bw-src">arXiv preprint &middot; 2026</p>
             </div>
-            <p class="bw-lead">Experiments show how AI advice can shift judgment, confidence, and control.</p>
-            <div class="bw-nums">
-              <div class="bw-num"><p class="n">+25 pts</p><p class="l">accuracy when the AI was right</p></div>
-              <div class="bw-num"><p class="n bad">&minus;15 pts</p><p class="l">when it was wrong, vs brain-only</p></div>
-            </div>
+            <p class="bw-lead">Psychological competence is a missing dimension in AI evaluation.</p>
+            <p class="bw-au">Marcos Economides et al.</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip to see details</div>
           </div>
           <div class="face back">
             <div class="bw-head">
-              <span class="bw-chip down">Can hamper</span>
-              <p class="bw-src">The full finding</p>
+              <span class="bw-chip">Evaluation</span>
+              <p class="bw-src">The core argument</p>
             </div>
-            <p class="bw-find">Across 1,372 participants, an accurate chatbot raised reasoning accuracy by 25 percentage points, but a faulty one drove it 15 points below unaided performance. People followed wrong AI advice on <strong>roughly four in five consulted trials</strong> and became more confident even when misled; time pressure, incentives, and feedback reduced but did not eliminate the effect.</p>
+            <p class="bw-find">Benchmarks reward accuracy, reasoning, and compliance, but say little about whether a system supports <strong>user cognition, emotional interpretation, and behavioral decision-making</strong> in ways fit for the user and context. The authors propose testing this with scenario-based probes and structured human and model-assisted evaluation.</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip back</div>
           </div>
         </div>
@@ -131,17 +117,17 @@
     </div>
 
     <div class="bw-panel" data-reveal>
-      <p>These are evidence-focused studies from higher-resource settings where there are enough engagement signals to study agency. They offer early clues for social sector AI: <span class="accent">how design can expand or hamper agency</span>, and <span class="accent">how agency can be measured directly rather than inferred from usage alone</span>.</p>
+      <p>Most NGO AI products in the Global South are built without this expertise in the room. That is the design gap, and <span class="accent">the lab's opening</span>.</p>
     </div>
 
     <div class="footnote" data-reveal>
       <span class="mark"></span>
-      <span>Sources: <a href="https://medium.com/jigsaw/a-new-perspective-on-human-agency-for-the-ai-era-cd785faab026" target="_blank" rel="noopener">How AI Is Affecting Human Agency</a> (Jigsaw, July 2025) &middot; <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Generative AI without guardrails can harm learning</a> (PNAS 122(26), 2025) &middot; <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6097646" target="_blank" rel="noopener">Thinking, Fast, Slow, and Artificial: the rise of cognitive surrender</a> (Wharton working paper, 2026).</span>
+      <span>Sources: <a href="https://www.nature.com/articles/s44159-026-00564-z" target="_blank" rel="noopener">Psychologists must be involved in building conversational AI chatbots</a> (Nature Reviews Psychology, 2026) &middot; <a href="https://link.springer.com/article/10.1007/s00146-026-02950-w" target="_blank" rel="noopener">Agency and alignment: toward a normative architecture for human-AI interaction</a> (AI &amp; Society, 2026) &middot; <a href="https://arxiv.org/abs/2607.08285" target="_blank" rel="noopener">Psychological competence as a missing dimension in AI evaluation</a> (arXiv, 2026).</span>
     </div>
   </div>
 <script src="shared/anim.js"></script>
 <script>
-/* Flip-card toggles. Click a card to flip between the headline and the full finding. */
+/* Flip-card toggles. Click a card to flip between the headline and the core argument. */
 (function () {
   var flips = document.querySelectorAll('.flip');
   for (var i = 0; i < flips.length; i++) {

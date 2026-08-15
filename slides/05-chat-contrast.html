@@ -10,7 +10,7 @@
   .slide { padding-bottom: 44px; position: relative; }
   h1 { max-width: 1700px; }
   .cc-row { margin-top: 24px; flex: 1; min-height: 0; display: grid;
-    grid-template-columns: 560px 560px 1fr; gap: 36px; }
+    grid-template-columns: 660px 660px; gap: 72px; justify-content: center; }
 
   /* Phone column: chip header + device frame */
   .ph-col { display: flex; flex-direction: column; min-height: 0; }
@@ -35,8 +35,8 @@
     flex-direction: column; gap: 9px; overflow: hidden; }
   .day { align-self: center; font-size: 14px; font-weight: 600; color: #5B6B77;
     background: #DDE7EC; border-radius: 8px; padding: 3px 12px; }
-  .msg { max-width: 84%; border-radius: 12px; padding: 8px 12px;
-    font-size: 19px; line-height: 1.3; color: #1B1F23;
+  .msg { max-width: 84%; border-radius: 12px; padding: 9px 14px;
+    font-size: 21px; line-height: 1.32; color: #1B1F23;
     box-shadow: 0 1px 1px hsl(210 30% 30% / 0.15); }
   .msg.out { align-self: flex-end; background: #DCF8C6; border-bottom-right-radius: 4px; }
   .msg.in  { align-self: flex-start; background: #FFFFFF; border-bottom-left-radius: 4px; }
@@ -53,33 +53,12 @@
     display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .ph-input .send svg { width: 20px; height: 20px; fill: #fff; }
 
-  /* Callout column */
-  .cc-side { display: flex; flex-direction: column; gap: 22px; min-height: 0; }
-  .co-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    box-shadow: var(--shadow-md); padding: 22px 26px; }
-  .co-card .tag { display: inline-block; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
-  .co-card p { margin: 0; font-size: 24px; font-weight: 400; line-height: 1.42;
-    color: var(--ink-secondary); }
-  .co-card p strong { font-weight: 700; color: var(--navy); }
-  .co-card.moves { border-left: 6px solid var(--gold); }
-  .co-move { display: flex; align-items: flex-start; gap: 12px; margin-top: 12px; }
-  .co-move svg { width: 22px; height: 22px; flex-shrink: 0; margin-top: 4px;
-    stroke: var(--gold-warm); stroke-width: 2.6; fill: none;
-    stroke-linecap: round; stroke-linejoin: round; }
-  .co-move p { font-size: 23px; line-height: 1.32; }
-  .co-panel { margin-top: auto; background: var(--navy-deep); border-radius: 12px;
-    padding: 26px 30px; }
-  .co-panel p { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.45; color: #E6EDF4; }
-  .co-panel p .accent { color: var(--gold); font-weight: 700; }
-
   /* Click-staged reveal */
-  .ph-a .msg, .ph-a .day, .ph-b .msg, .ph-b .day, .cc-side .st {
+  .ph-a .msg, .ph-a .day, .ph-b .msg, .ph-b .day {
     opacity: 0; transform: translateY(14px);
     transition: opacity 0.4s ease var(--d, 0s), transform 0.4s ease var(--d, 0s); }
   body.st1 .ph-a .msg, body.st1 .ph-a .day { opacity: 1; transform: none; }
   body.st2 .ph-b .msg, body.st2 .ph-b .day { opacity: 1; transform: none; }
-  body.st3 .cc-side .st { opacity: 1; transform: none; }
   body.cc-more { cursor: pointer; }
   .cc-hint { position: absolute; left: 120px; bottom: 14px; display: flex; align-items: center; gap: 10px;
     font-size: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);
@@ -89,11 +68,10 @@
   .cc-note { position: absolute; right: 120px; bottom: 14px; font-size: 16px;
     color: var(--ink-muted); }
   body.anim-static .ph-a .msg, body.anim-static .ph-a .day,
-  body.anim-static .ph-b .msg, body.anim-static .ph-b .day,
-  body.anim-static .cc-side .st { transition: none !important; }
+  body.anim-static .ph-b .msg, body.anim-static .ph-b .day { transition: none !important; }
   body.anim-static .cc-hint { display: none; }
   @media print {
-    .ph-a .msg, .ph-a .day, .ph-b .msg, .ph-b .day, .cc-side .st {
+    .ph-a .msg, .ph-a .day, .ph-b .msg, .ph-b .day {
       opacity: 1 !important; transform: none !important; transition: none !important; }
     .cc-hint { display: none !important; }
   }
@@ -101,7 +79,7 @@
 </head>
 <body>
   <div class="slide">
-    <h1 data-reveal>Same mother, same question &mdash; <span class="accent">two very different conversations</span></h1>
+    <h1 data-reveal>Which health AI chatbot better promotes agency?</h1>
 
     <div class="cc-row">
       <div class="ph-col ph-a" data-reveal>
@@ -164,32 +142,16 @@
         </div></div>
       </div>
 
-      <div class="cc-side">
-        <div class="co-card st" style="--d:0s">
-          <span class="tag">Left phone</span>
-          <p>The answer is <strong>correct</strong> &mdash; and the conversation ends where it began. Nothing changed in what Priya will do next.</p>
-        </div>
-        <div class="co-card moves st" style="--d:0.15s">
-          <span class="tag">Right phone</span>
-          <p>The same opening becomes <strong>a goal she owns</strong>:</p>
-          <div class="co-move"><svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg><p>Open question surfaces the real barrier</p></div>
-          <div class="co-move"><svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg><p>Concrete if&ndash;then plan around her constraints</p></div>
-          <div class="co-move"><svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg><p>Commitment stated in her own words, plus a reminder</p></div>
-        </div>
-        <div class="co-panel st" style="--d:0.3s">
-          <p>Same model, same facts. The difference is <span class="accent">a design choice</span> &mdash; and social-psychological research tells us which conversational moves build agency.</p>
-        </div>
-      </div>
     </div>
 
-    <div class="cc-hint" id="ccHint" data-reveal><span class="dot"></span><span id="ccHintText">Click or arrow key to reveal &middot; 3 left</span></div>
+    <div class="cc-hint" id="ccHint" data-reveal><span class="dot"></span><span id="ccHintText">Click or arrow key to reveal &middot; 2 left</span></div>
     <div class="cc-note" data-reveal>Simulated conversations for illustration, styled after real service transcripts</div>
   </div>
 <script src="shared/anim.js"></script>
 <script>
-/* Click-staged reveal: left conversation, then right, then the callouts. */
+/* Click-staged reveal: left conversation, then right. */
 (function () {
-  var stage = 0, MAX = 3;
+  var stage = 0, MAX = 2;
   var hint = document.getElementById('ccHint');
   var hintText = document.getElementById('ccHintText');
   function render() {

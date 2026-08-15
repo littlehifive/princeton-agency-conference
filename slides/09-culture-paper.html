@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Evaluating AI Across Cultures</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1640px; }
+  .paper-wrap { margin-top: 24px; flex: 1; min-height: 0; display: flex;
+    align-items: center; justify-content: center; }
+  .paper-frame { width: 750px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden; box-shadow: 0 10px 26px hsl(210 50% 20% / 0.14); }
+  .paper-frame img { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>Every benchmark and metric carries <span class="accent">cultural defaults</span> &mdash; we mapped where they hide</h1>
+    <p class="title-note" data-reveal>Learning projects &middot; multi-author paper from the accelerator's working group, PNAS Nexus (2026)</p>
+
+    <div class="paper-wrap" data-reveal>
+      <div class="paper-frame">
+        <img src="assets/pnas-paper.png"
+             alt="First page of the PNAS Nexus paper: Evaluating AI Across Cultures, a multilevel framework for generative AI in global development">
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>
