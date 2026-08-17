@@ -76,7 +76,7 @@
 </head>
 <body>
   <div class="slide" id="am-slide">
-    <h1 data-reveal>An interactive map of organizations and their <span class="accent">AI products</span> in TAF's accelerator</h1>
+    <h1 data-reveal>We worked with NGOs globally to design and evaluate their <span class="accent">AI products</span> through accelerator programs.</h1>
     <div class="am-hint" data-reveal>
       <span class="tag">Interactive</span>
       <span>Click the map, chips, or legend to focus an org &middot; click empty space to clear, or</span>
@@ -87,7 +87,7 @@
       <div class="am-mapwrap" data-reveal>
         <svg id="am-svg" width="1120" height="740" viewBox="0 0 1180 780" role="img"
           aria-label="Map of Africa and South Asia showing where the sixteen accelerator organizations operate"></svg>
-        <p class="am-note">Segments show multiple organizations in one country; off-crop footprint countries appear in the details. Map data: Natural Earth.</p>
+        <p class="am-note">Map data: Natural Earth.</p>
         <div class="am-legend" id="am-legend">
           <div><p class="yr">2025 cohort</p><div class="items" id="am-leg-2025"></div></div>
           <div><p class="yr">2026 cohort</p><div class="items" id="am-leg-2026"></div></div>
@@ -239,8 +239,8 @@
         var pl = f.planned ? ' pl' : '';
         return '<li><span class="lv' + pl + '">' + LEVELS[lv] + '</span><p class="' + (f.planned ? 'pl' : '') + '">' + f.fact + '</p></li>';
       }).join('') + '</ul>' +
-      '<p class="ct"><strong>AI product:</strong> ' + listCountries(o.aiCountries, 6) +
-      '<br><strong>Organization operates:</strong> ' + listCountries(o.orgCountries, 8) + '</p>';
+      '<p class="ct"><strong>AI product in:</strong> ' + listCountries(o.aiCountries, 6) +
+      '<br><strong>Organization operates in:</strong> ' + listCountries(o.orgCountries, 8) + '</p>';
     card.innerHTML = h;
   }
 

@@ -8,21 +8,26 @@
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   h1 { max-width: 1620px; }
-  .shot-wrap { margin-top: 24px; flex: 1; min-height: 0; display: flex;
-    align-items: center; justify-content: center; }
-  .shot-frame { width: 1010px; background: var(--surface); border: 1px solid var(--border);
+  .title-note { max-width: 1620px; }
+  .shot-wrap { margin-top: 28px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 34px; align-items: center; }
+  .shot-frame { background: var(--surface); border: 1px solid var(--border);
     border-radius: 14px; overflow: hidden; box-shadow: 0 10px 26px hsl(210 50% 20% / 0.14); }
   .shot-bar { display: flex; align-items: center; gap: 10px; padding: 13px 20px;
     border-bottom: 1px solid var(--border); background: var(--surface-subtle); }
   .shot-bar .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--border); }
-  .shot-bar .url { margin-left: 12px; font-size: 17px; font-weight: 600; color: var(--ink-muted); }
-  .shot-frame img { display: block; width: 100%; height: auto; }
+  .shot-bar .url { margin-left: 12px; font-size: 16px; font-weight: 600; color: var(--ink-muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .shot-frame img { display: block; width: 100%; height: 520px; object-fit: contain; background: #fff; }
+  .frame-label { padding: 16px 20px 18px; border-top: 1px solid var(--border);
+    font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.25; background: var(--surface); }
 </style>
 </head>
 <body>
   <div class="slide">
-    <h1 data-reveal>Behavioral science that <span class="accent">rides along</span> inside everyday AI work</h1>
-    <p class="title-note" data-reveal>Learning projects &middot; Claude Skills co-developed with Irrational Labs &middot; open source at <a href="https://github.com/agency-fund/taf-skills" target="_blank" rel="noopener">github.com/agency-fund/taf-skills</a></p>
+    <h1 data-reveal>Behavioral science skills that <span class="accent">amplify exisiting AI workflows</span></h1>
+    <p class="title-note" data-reveal>Claude skills on behavioral science by The Agency Fund and Irrational Labs 
+      (e.g., <a href="https://joe-speed.github.io/behavioural-skills/index.html" target="_blank" rel="noopener">behavioural-skills</a>; <a href="https://github.com/agency-fund/taf-skills" target="_blank" rel="noopener">taf-skills</a>)</p>
 
     <div class="shot-wrap" data-reveal>
       <div class="shot-frame">
@@ -32,6 +37,16 @@
         </div>
         <img src="assets/behavioural-skills.png"
              alt="Screenshot of the behavioural-skills website listing the behavioral-science Claude Skills co-developed with Irrational Labs">
+        <div class="frame-label">Behavioral-science skills for applied AI workflows</div>
+      </div>
+      <div class="shot-frame">
+        <div class="shot-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="url">Claude Skills &middot; Agency Measurement</span>
+        </div>
+        <img src="assets/claude-agency-measurement.png"
+             alt="Screenshot of a Claude agency measurement skill demonstration">
+        <div class="frame-label">Agency-measurement skills for research and evaluation</div>
       </div>
     </div>
   </div>

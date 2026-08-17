@@ -8,22 +8,31 @@
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   h1 { max-width: 1640px; }
-  .paper-wrap { margin-top: 24px; flex: 1; min-height: 0; display: flex;
-    align-items: center; justify-content: center; }
-  .paper-frame { width: 750px; background: var(--surface); border: 1px solid var(--border);
+  .paper-wrap { margin-top: 28px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 560px 1fr; gap: 34px; align-items: center; }
+  .paper-frame { background: var(--surface); border: 1px solid var(--border);
     border-radius: 10px; overflow: hidden; box-shadow: 0 10px 26px hsl(210 50% 20% / 0.14); }
-  .paper-frame img { display: block; width: 100%; height: auto; }
+  .paper-frame img { display: block; width: 100%; height: 650px; object-fit: contain; background: #fff; }
+  .paper-frame.diagram img { height: auto; }
+  .frame-label { padding: 14px 18px 16px; border-top: 1px solid var(--border);
+    font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.25; background: var(--surface); }
 </style>
 </head>
 <body>
   <div class="slide">
-    <h1 data-reveal>Every benchmark and metric carries <span class="accent">cultural defaults</span> &mdash; we mapped where they hide</h1>
-    <p class="title-note" data-reveal>Learning projects &middot; multi-author paper from the accelerator's working group, PNAS Nexus (2026)</p>
+    <h1 data-reveal>A review paper that connects AI eval with <span class="accent">cultural defaults</span></h1>
+    <p class="title-note" data-reveal>An interdisciplinary paper from the accelerator's AI eval working group, PNAS Nexus (under review)</p>
 
     <div class="paper-wrap" data-reveal>
       <div class="paper-frame">
         <img src="assets/pnas-paper.png"
              alt="First page of the PNAS Nexus paper: Evaluating AI Across Cultures, a multilevel framework for generative AI in global development">
+        <div class="frame-label">Paper draft</div>
+      </div>
+      <div class="paper-frame diagram">
+        <img src="assets/pnas-paper-diagram.png"
+             alt="Diagram from the PNAS Nexus paper showing a multilevel framework for evaluating AI across cultures">
+        <div class="frame-label">Multilevel framework for culturally grounded AI evaluation</div>
       </div>
     </div>
   </div>
