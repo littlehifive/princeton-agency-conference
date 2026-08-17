@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Three papers, one call</title>
+<title>Four papers, one call</title>
 <link rel="stylesheet" href="shared/fonts.css">
 <link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   h1 { max-width: 1680px; }
-  .bw-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; flex: 1; min-height: 0; }
+  .bw-grid { margin-top: 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; min-height: 370px; }
   /* Flip cards */
   .flip { position: relative; perspective: 1800px; cursor: pointer; min-height: 0; }
   .flip-inner { position: absolute; inset: 0; transform-style: preserve-3d;
@@ -18,35 +18,42 @@
   .flip.flipped:hover .flip-inner { transform: rotateY(180deg) translateY(-4px); }
   .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
     background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-md);
-    padding: 26px 30px 46px; display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
+    padding: 22px 24px 42px; display: flex; flex-direction: column; gap: 13px; overflow: hidden; }
   .face.back { transform: rotateY(180deg); }
-  .flip-hint { position: absolute; right: 22px; bottom: 16px; display: flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
-  .flip-hint svg { width: 16px; height: 16px; stroke: var(--gold-warm); fill: none;
+  .flip-hint { position: absolute; right: 18px; bottom: 14px; display: flex; align-items: center; gap: 7px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .flip-hint svg { width: 15px; height: 15px; stroke: var(--gold-warm); fill: none;
     stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
   /* Card content */
   .bw-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .bw-chip { font-size: 16px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-    border-radius: 6px; padding: 5px 13px; flex-shrink: 0; background: var(--gold); color: var(--navy-deep); }
-  .bw-src { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: 0.06em;
+  .bw-chip { font-size: 14px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 6px; padding: 5px 11px; flex-shrink: 0; background: var(--gold); color: var(--navy-deep); }
+  .bw-src { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.06em;
     text-transform: uppercase; color: var(--ink-muted); }
-  .bw-lead { margin: 6px 0 0; font-size: 29px; font-weight: 800; line-height: 1.28; color: var(--navy); }
-  .bw-find { margin: 0; font-size: 21px; line-height: 1.46; color: var(--ink); }
+  .bw-lead { margin: 4px 0 0; font-size: 23px; font-weight: 800; line-height: 1.23; color: var(--navy); }
+  .bw-find { margin: 0; font-size: 18px; line-height: 1.38; color: var(--ink); }
   .bw-find strong { color: var(--navy); }
   .bw-au { margin: 0; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border);
-    font-size: 20px; font-weight: 600; line-height: 1.35; color: var(--ink-secondary); }
-  .bw-panel { margin-top: 24px; background: var(--navy-deep); border-radius: 8px; padding: 22px 30px; }
-  .bw-panel p { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.42; color: var(--white); }
-  .bw-panel p .accent { color: var(--gold); }
-  .footnote { margin-top: 22px; font-size: 19px; }
+    font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--ink-secondary); }
+  .wise-panel { margin-top: 24px; background: var(--navy-deep); border-radius: 12px; padding: 22px 30px;
+    display: grid; grid-template-columns: 0.86fr 1.14fr; gap: 30px; align-items: start; }
+  .wise-panel p { margin: 0; color: #E6EDF4; }
+  .wise-panel .wise-main { font-size: 23px; font-weight: 600; line-height: 1.36; }
+  .wise-panel .wise-main .accent { color: var(--gold); font-weight: 800; }
+  .wise-panel a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+  .wise-examples { display: grid; gap: 10px; }
+  .wise-example { display: flex; gap: 12px; align-items: flex-start; color: #E6EDF4;
+    font-size: 19px; line-height: 1.3; }
+  .wise-example .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold);
+    margin-top: 9px; flex-shrink: 0; }
+  .footnote { margin-top: 18px; font-size: 17px; }
   .footnote a { color: #6699CC; text-decoration: underline; text-underline-offset: 3px; }
   @media print { .flip.flipped .flip-inner { transform: none; } }
 </style>
 </head>
 <body>
   <div class="slide">
-    <h1 data-reveal>Three papers, one call: put <span class="accent">psychology inside AI design and evaluation</span></h1>
-    <p class="title-note" data-reveal>Research &middot; the agenda the lab builds on</p>
+    <h1 data-reveal>There is a whole new field of literature on <span class="accent">bringing psychology inside AI design and evaluation</span></h1>
 
     <div class="bw-grid">
       <div class="flip" data-reveal>
@@ -57,7 +64,7 @@
               <p class="bw-src">Nature Reviews Psychology &middot; 2026</p>
             </div>
             <p class="bw-lead">Psychologists must be involved in building conversational AI chatbots.</p>
-            <p class="bw-au">Xuan Zhao &middot; Stanford University</p>
+            <p class="bw-au">Zhao, 2026</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip to see details</div>
           </div>
           <div class="face back">
@@ -79,7 +86,7 @@
               <p class="bw-src">AI &amp; Society &middot; 2026</p>
             </div>
             <p class="bw-lead">Alignment means integrating AI into human agency, not just learning our values.</p>
-            <p class="bw-au">Sa&scaron;a Josifovi&cacute; &amp; J&ouml;rg Noller</p>
+            <p class="bw-au">Sa&scaron;a Josifovi&cacute; &amp; J&ouml;rg Nolle, 2026</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip to see details</div>
           </div>
           <div class="face back">
@@ -101,7 +108,7 @@
               <p class="bw-src">arXiv preprint &middot; 2026</p>
             </div>
             <p class="bw-lead">Psychological competence is a missing dimension in AI evaluation.</p>
-            <p class="bw-au">Marcos Economides et al.</p>
+            <p class="bw-au">Marcos Economides et al., 2026</p>
             <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip to see details</div>
           </div>
           <div class="face back">
@@ -114,15 +121,42 @@
           </div>
         </div>
       </div>
+
+      <div class="flip" data-reveal>
+        <div class="flip-inner">
+          <div class="face front">
+            <div class="bw-head">
+              <span class="bw-chip">Field</span>
+              <p class="bw-src">Nature &middot; 2019</p>
+            </div>
+            <p class="bw-lead">AI needs a behavioral science of machine and human-machine behavior.</p>
+            <p class="bw-au">Rahwan, Cebrian, Obradovich et al., 2019</p>
+            <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip to see details</div>
+          </div>
+          <div class="face back">
+            <div class="bw-head">
+              <span class="bw-chip">Field</span>
+              <p class="bw-src">The core argument</p>
+            </div>
+            <p class="bw-find">AI systems increasingly mediate social, cultural, economic, and political interaction. Understanding their effects requires an interdisciplinary <strong>science of machine behaviour</strong> that combines computer science with behavioral, social, and cognitive science methods.</p>
+            <div class="flip-hint"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Flip back</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="bw-panel" data-reveal>
-      <p>Most NGO AI products in the Global South are built without this expertise in the room. That is the design gap, and <span class="accent">the lab's opening</span>.</p>
+    <div class="wise-panel" data-reveal>
+      <p class="wise-main">We also see a unique opportunity in bringing the <a href="https://www.psychologicalscience.org/journals/current-directions/0963721413512856/" target="_blank" rel="noopener">science of wise psychological interventions</a> into AI design. We are working with professors like <span class="accent">Gregory Walton</span> to draft practical guidelines and papers for agency-supportive AI.</p>
+      <div class="wise-examples">
+  <div class="wise-example"><span class="dot"></span><span>Education assistants that protect belonging by helping users interpret struggle as a normal part of learning, rather than evidence that "people like me don't belong here."</span></div>
+  <div class="wise-example"><span class="dot"></span><span>Health or livelihoods coaches that strengthen users' sense of control by helping them recognize meaningful choices and act on options available to them.</span></div>
+  <div class="wise-example"><span class="dot"></span><span>AI messaging tools that deliberately test how small changes in language shape identity, social norms, and motivation - for example, framing an action as part of "who I am," not just something to do.</span></div>
+</div>
     </div>
 
     <div class="footnote" data-reveal>
       <span class="mark"></span>
-      <span>Sources: <a href="https://www.nature.com/articles/s44159-026-00564-z" target="_blank" rel="noopener">Psychologists must be involved in building conversational AI chatbots</a> (Nature Reviews Psychology, 2026) &middot; <a href="https://link.springer.com/article/10.1007/s00146-026-02950-w" target="_blank" rel="noopener">Agency and alignment: toward a normative architecture for human-AI interaction</a> (AI &amp; Society, 2026) &middot; <a href="https://arxiv.org/abs/2607.08285" target="_blank" rel="noopener">Psychological competence as a missing dimension in AI evaluation</a> (arXiv, 2026).</span>
+      <span>Sources: <a href="https://www.nature.com/articles/s44159-026-00564-z" target="_blank" rel="noopener">Psychologists must be involved in building conversational AI chatbots</a> (Nature Reviews Psychology, 2026) &middot; <a href="https://link.springer.com/article/10.1007/s00146-026-02950-w" target="_blank" rel="noopener">Agency and alignment: toward a normative architecture for human-AI interaction</a> (AI &amp; Society, 2026) &middot; <a href="https://arxiv.org/abs/2607.08285" target="_blank" rel="noopener">Psychological competence as a missing dimension in AI evaluation</a> (arXiv, 2026) &middot; <a href="https://www.nature.com/articles/s41586-019-1138-y" target="_blank" rel="noopener">Machine behaviour</a> (Nature, 2019) &middot; <a href="https://www.psychologicalscience.org/journals/current-directions/0963721413512856/" target="_blank" rel="noopener">The New Science of Wise Psychological Interventions</a> (Current Directions in Psychological Science, 2014).</span>
     </div>
   </div>
 <script src="shared/anim.js"></script>

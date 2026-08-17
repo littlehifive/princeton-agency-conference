@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Raising The Village SBCC Coach study</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1660px; }
+  .rtv-wrap { margin-top: 30px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 1fr 1.15fr; gap: 40px; }
+  .rtv-col { display: flex; flex-direction: column; gap: 20px; min-height: 0; }
+  .rtv-context { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 24px 28px; }
+  .rtv-context .h { margin: 0 0 8px; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .rtv-context p { margin: 0; font-size: 23px; font-weight: 400; line-height: 1.42; color: var(--ink-secondary); }
+  .rtv-context p strong { font-weight: 700; color: var(--navy); }
+  .rtv-stats { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .rtv-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 20px 24px; display: flex; flex-direction: column;
+    justify-content: center; }
+  .rtv-stat .v { font-size: 54px; font-weight: 900; color: var(--navy); line-height: 1.05;
+    font-variant-numeric: tabular-nums; }
+  .rtv-stat .v .u { font-size: 28px; font-weight: 700; color: var(--gold-warm); }
+  .rtv-stat .k { margin-top: 8px; font-size: 21px; font-weight: 500; line-height: 1.3; color: var(--ink-secondary); }
+  .rtv-study { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 24px 30px; display: flex; flex-direction: column; }
+  .rtv-study .h { margin: 0 0 14px; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-muted); }
+  .rtv-rq { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; }
+  .rtv-rq + .rtv-rq { border-top: 1px solid var(--border); }
+  .rtv-rq .tag { flex-shrink: 0; font-size: 17px; font-weight: 800; color: var(--navy-deep);
+    background: var(--gold); border-radius: 6px; padding: 5px 12px; }
+  .rtv-rq p { margin: 0; font-size: 22px; font-weight: 400; line-height: 1.38; color: var(--ink-secondary); }
+  .rtv-rq p strong { font-weight: 700; color: var(--ink); }
+  .rtv-panel { background: var(--navy-deep); border-radius: 12px; padding: 22px 28px; }
+  .rtv-panel p { margin: 0; font-size: 24px; font-weight: 500; line-height: 1.45; color: #E6EDF4; }
+  .rtv-panel p .accent { color: var(--gold); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>Designing AI-personalized coaching to <span class="accent">support field-agent agency</span> in household behavior change</h1>
+    <p class="title-note" data-reveal>A design and evaluation study with Raising The Village's SBCC AI Coach</p>
+
+    <div class="rtv-wrap">
+      <div class="rtv-col">
+        <div class="rtv-context" data-reveal>
+          <p class="h">The setting</p>
+          <p>Raising The Village's <strong>SBCC AI Coach</strong> generates personalized behavior-change coaching messages for last-mile households. Field agents review and deliver the messages across Uganda, Rwanda, and the Democratic Republic of Congo, so the AI intervention runs through human judgment rather than replacing it.</p>
+        </div>
+        <div class="rtv-stats">
+          <div class="rtv-stat" data-reveal><span class="v">2,208</span><span class="k">messages generated in the pilot</span></div>
+          <div class="rtv-stat" data-reveal><span class="v">333</span><span class="k">household check-ins covered</span></div>
+          <div class="rtv-stat" data-reveal><span class="v">98.3<span class="u">%</span></span><span class="k">rated helpful by field agents</span></div>
+          <div class="rtv-stat" data-reveal><span class="v">97.1<span class="u">%</span></span><span class="k">human and LLM rating agreement</span></div>
+        </div>
+      </div>
+
+      <div class="rtv-col">
+        <div class="rtv-study" data-reveal="right">
+          <p class="h">The study &middot; personalization and adoption</p>
+          <div class="rtv-rq">
+            <span class="tag">Design</span>
+            <p>Can AI-generated coaching make SBCC messages more <strong>contextual, actionable, and culturally relevant</strong> while preserving field agents' discretion?</p>
+          </div>
+          <div class="rtv-rq">
+            <span class="tag">Agency</span>
+            <p>Do agents experience the system as a tool that expands their coaching capacity, or as a script that narrows their professional judgment?</p>
+          </div>
+          <div class="rtv-rq">
+            <span class="tag">Measure</span>
+            <p>Track practice adoption, coaching coverage, field-agent knowledge, and household outcomes as the rollout moves from message-quality validation into impact evaluation.</p>
+          </div>
+          <div class="rtv-rq">
+            <span class="tag">Next</span>
+            <p>A cluster-randomized personalization trial is planned for the 2026B-2027 cycle against household outcomes.</p>
+          </div>
+        </div>
+        <div class="rtv-panel" data-reveal="right">
+          <p>The design question is whether AI can help field agents deliver better behavior-change support while <span class="accent">strengthening, rather than bypassing, the human relationships that make coaching work.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>
