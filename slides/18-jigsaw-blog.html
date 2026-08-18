@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .jb-wrap { margin-top: 30px; flex: 1; min-height: 0; display: grid;
-    grid-template-columns: 720px 1fr; gap: 48px; }
+    grid-template-columns: 650px 1fr; gap: 44px; }
 
   /* Blog screenshot in a browser frame */
   .jb-shotcol { display: flex; align-items: center; justify-content: center; min-height: 0; }
-  .shot-frame { width: 700px; background: var(--surface); border: 1px solid var(--border);
+  .shot-frame { width: 640px; background: var(--surface); border: 1px solid var(--border);
     border-radius: 14px; overflow: hidden; box-shadow: 0 10px 26px hsl(210 50% 20% / 0.14); }
   .shot-bar { display: flex; align-items: center; gap: 10px; padding: 12px 18px;
     border-bottom: 1px solid var(--border); background: var(--surface-subtle); }
@@ -21,50 +21,49 @@
   .shot-frame img { display: block; width: 100%; height: auto; }
 
   /* Right column */
-  .jb-side { display: flex; flex-direction: column; gap: 22px; min-height: 0; }
-  .jb-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    box-shadow: var(--shadow-md); padding: 22px 26px; }
-  .jb-card .t { margin: 0 0 8px; font-size: 25px; font-weight: 800; line-height: 1.25; color: var(--navy); }
-  .jb-card .d { margin: 0; font-size: 22px; font-weight: 400; line-height: 1.42; color: var(--ink-secondary); }
-  .jb-card .d strong { font-weight: 700; color: var(--ink); }
-  .jb-panel { margin-top: auto; background: var(--navy-deep); border-radius: 12px; padding: 24px 28px; }
-  .jb-panel p { margin: 0; font-size: 24px; font-weight: 500; line-height: 1.45; color: #E6EDF4; }
-  .jb-panel p .accent { color: var(--gold); font-weight: 700; }
+  .jb-summary { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 28px 34px; align-self: center; }
+  .jb-summary h2 { margin: 0 0 18px; font-size: 31px; line-height: 1.2; font-weight: 800; color: var(--navy); }
+  .jb-summary ul { margin: 0; padding-left: 26px; display: grid; gap: 14px; }
+  .jb-summary ul ul { margin-top: 10px; gap: 8px; padding-left: 24px; }
+  .jb-summary li { font-size: 18px; line-height: 1.36; color: var(--ink-secondary); }
+  .jb-summary > ul > li::marker { color: var(--gold-warm); font-size: 1.2em; }
+  .jb-summary ul ul li::marker { color: var(--navy); font-size: 1em; }
+  .jb-summary a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+  .jb-lead { color: var(--navy); font-weight: 800; }
 </style>
 </head>
 <body>
   <div class="slide">
-    <h1 data-reveal>We wrote the measurement playbook down, <span class="accent">with Google Jigsaw</span></h1>
-    <p class="title-note" data-reveal>Measuring agency &middot; a co-published practitioner's guide &middot; <a href="https://theagencyfund.substack.com/p/measuring-agency-in-a-digital-context" target="_blank" rel="noopener">theagencyfund.substack.com</a></p>
+    <h1 data-reveal>We created a guideline for <span class="accent">measuring agency in a digital context </span></h1>
+    <p class="title-note" data-reveal><a href="https://theagencyfund.substack.com/p/measuring-agency-in-a-digital-context" target="_blank" rel="noopener">A practitioner's guide</a> co-cocreated with Google Jigsaw</p>
 
     <div class="jb-wrap">
       <div class="jb-shotcol" data-reveal>
         <div class="shot-frame">
           <div class="shot-bar">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="url">theagencyfund.substack.com &middot; Measuring Agency in a Digital Context</span>
+            <span class="url">Measuring Agency in a Digital Context</span>
           </div>
           <img src="assets/taf-jigsaw-blog.png"
                alt="Screenshot of the blog post Measuring Agency in a Digital Context, co-written by The Agency Fund and Google Jigsaw">
         </div>
       </div>
 
-      <div class="jb-side">
-        <div class="jb-card hoverable" data-reveal="right">
-          <p class="t">Measuring Agency in a Digital Context</p>
-          <p class="d">A practitioner's guide by <strong>Zezhen Wu</strong> (The Agency Fund) with <strong>Beth Goldberg and Rachel Xu</strong> (Google Jigsaw), published July 2026.</p>
-        </div>
-        <div class="jb-card hoverable" data-reveal="right">
-          <p class="t">The method, in three moves</p>
-          <p class="d"><strong>Define</strong> what agency means in your context, <strong>choose</strong> measures across on-platform and off-platform data, then <strong>test and validate</strong> them iteratively.</p>
-        </div>
-        <div class="jb-card hoverable" data-reveal="right">
-          <p class="t">Ships with tools</p>
-          <p class="d">An open Claude Skill for brainstorming measurement approaches, and a curated NotebookLM of the underlying research. Free for any team.</p>
-        </div>
-        <div class="jb-panel" data-reveal="right">
-          <p>The lab's measurement thinking is public and reusable, and <span class="accent">the next slides walk its core moves</span>.</p>
-        </div>
+      <div class="jb-summary" data-reveal="right">
+        <h2>Summary</h2>
+        <ul>
+          <li>The Agency Fund and Google Jigsaw have co-developed a free set of resources and AI tools to help measure how digital and AI tools shape human agency in practice: an open-source <a href="https://github.com/agency-fund/taf-skills/tree/main/ask-agency-measurement" target="_blank" rel="noopener">Claude Skill</a> that helps you brainstorm alongside this blog and a curated <a href="https://notebooklm.google.com/notebook/fc5c61b3-a3b8-462a-9ed2-9778d70f8386?authuser=1" target="_blank" rel="noopener">NotebookLM</a> with useful papers and measurement approaches.</li>
+          <li><span class="jb-lead">Why should tech teams care about agency?</span> Research increasingly shows that digital and AI tools can expand human agency; but when poorly designed or implemented, they can also undermine it.</li>
+          <li><span class="jb-lead">What is agency in the context of digital and AI tools?</span> Agency is a person's capability to navigate toward the future they want. It can be experienced internally (e.g., feeling capable or empowered) or expressed externally through choices and actions. Agency may concern a user's end goals independent of technology, or their ability to shape, control, and effectively use a tool in pursuit of those goals.</li>
+          <li><span class="jb-lead">How do we measure agency?</span> It should be measured as an outcome, not inferred from engagement alone. Teams should specify what agency means for their specific users and contexts. We suggest three broad steps:
+            <ul>
+              <li>Define agency for your local problem</li>
+              <li>Choose the right measurement tools for the right type of on-platform or off-platform data, measured at the right moment</li>
+              <li>Test and validate the measurement tools iteratively</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
