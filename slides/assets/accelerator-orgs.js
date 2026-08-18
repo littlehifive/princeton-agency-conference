@@ -3,6 +3,7 @@
 window.A2L_ORGS = [
   {
     id: "digital-green", name: "Digital Green", short: "Digital Green", chip: "DG", cohort: 2025,
+    logo: "assets/cohort-logos/digital-green.svg",
     color: "#2a78d6", segmentRank: 1,
     product: "FarmerChat",
     desc: "A multilingual AI agronomy advisor for smallholder farmers, using text, voice, and images to deliver localized recommendations.",
@@ -17,6 +18,7 @@ window.A2L_ORGS = [
   },
   {
     id: "jacaranda-health", name: "Jacaranda Health", short: "Jacaranda", chip: "JH", cohort: 2025,
+    logo: "assets/cohort-logos/jacaranda-health.png",
     color: "#e34948", segmentRank: 7,
     product: "PROMPTS on Voice",
     desc: "Voice-enabled AI triage and Q&A for PROMPTS, extending maternal-health support to mothers with low literacy or limited text access.",
@@ -31,6 +33,7 @@ window.A2L_ORGS = [
   },
   {
     id: "precision-development", name: "Precision Development (PxD)", short: "PxD", chip: "PxD", cohort: 2025,
+    logo: "assets/cohort-logos/precision-development.svg",
     color: "#eda100", segmentRank: 12,
     product: "PaddyAI",
     desc: "GenAI local-language audio advisories for farmers, with agronomist review before recommendations are broadcast.",
@@ -45,6 +48,8 @@ window.A2L_ORGS = [
   },
   {
     id: "reach-digital-health", name: "Reach Digital Health", short: "Reach DH", chip: "RDH", cohort: 2025,
+    logo: "assets/cohort-logos/reach-digital-health.png",
+    logoTone: "dark",
     color: "#0ea5e9", segmentRank: 4,
     product: "MomConnect AI",
     desc: "AI-supported onboarding, chatbot triage, and personalized surveys for South Africa's national maternal-health messaging platform.",
@@ -59,6 +64,7 @@ window.A2L_ORGS = [
   },
   {
     id: "noora-health", name: "Noora Health", short: "Noora", chip: "NH", cohort: 2025,
+    logo: "assets/cohort-logos/noora-health.svg",
     color: "#9333ea", segmentRank: 10,
     product: "Remote Engagement Service + AI co-pilot",
     desc: "RAG triage, voice registration, and content personalization for caregiver support, with humans retaining control of high-risk replies.",
@@ -73,6 +79,7 @@ window.A2L_ORGS = [
   },
   {
     id: "rocket-learning", name: "Rocket Learning", short: "Rocket", chip: "RL", cohort: 2025,
+    logo: "assets/cohort-logos/rocket-learning.png",
     color: "#e87ba4", segmentRank: 15,
     product: "Shiksha Saathi",
     desc: "A WhatsApp AI assistant for Anganwadi workers and parents, answering early-childhood learning questions in local language mixes.",
@@ -87,6 +94,7 @@ window.A2L_ORGS = [
   },
   {
     id: "youth-impact", name: "Youth Impact", short: "Youth Impact", chip: "YI", cohort: 2025,
+    logo: "assets/cohort-logos/youth-impact.png",
     color: "#b45309", segmentRank: 6,
     product: "Ganitha Ganaka",
     desc: "Phone-based AI numeracy assessment and tutoring for primary students, designed for child speech and caregiver-mediated practice.",
@@ -101,6 +109,7 @@ window.A2L_ORGS = [
   },
   {
     id: "udhyam", name: "Udhyam Learning Foundation", short: "Udhyam", chip: "UD", cohort: 2025,
+    logo: "assets/cohort-logos/udhyam.png",
     color: "#4f46e5", segmentRank: 13,
     product: "Udhyam Saathi",
     desc: "A WhatsApp/web AI mentor that helps students practise entrepreneurial mindsets through idea generation, reflection, and multimodal feedback.",
@@ -115,6 +124,8 @@ window.A2L_ORGS = [
   },
   {
     id: "adalat-ai", name: "Adalat AI", short: "Adalat", chip: "AD", cohort: 2026,
+    logo: "assets/cohort-logos/adalat-ai.png",
+    logoTone: "dark",
     color: "#0d9488", segmentRank: 2,
     product: "AI courtroom transcription",
     desc: "Speech recognition and case-flow tools that transcribe courtroom proceedings in Indian languages and digitize legal records.",
@@ -129,6 +140,7 @@ window.A2L_ORGS = [
   },
   {
     id: "ami", name: "African Management Institute", short: "AMI", chip: "AMI", cohort: 2026,
+    logo: "assets/cohort-logos/ami.png",
     color: "#8b5cf6", segmentRank: 11,
     product: "AMI Coachbot",
     desc: "A WhatsApp coaching assistant that handles reminders, nudges, and tool recommendations for entrepreneur cohorts.",
@@ -143,6 +155,7 @@ window.A2L_ORGS = [
   },
   {
     id: "intelehealth", name: "Intelehealth", short: "Intelehealth", chip: "IH", cohort: 2026,
+    logo: "assets/cohort-logos/intelehealth.png",
     color: "#eb6834", segmentRank: 8,
     product: "Ayu 2.0",
     desc: "AI clinical decision support that turns frontline patient histories into ranked diagnoses for telemedicine doctors to confirm.",
@@ -157,6 +170,7 @@ window.A2L_ORGS = [
   },
   {
     id: "kabakoo", name: "Kabakoo Academies", short: "Kabakoo", chip: "KB", cohort: 2026,
+    logo: "assets/cohort-logos/kabakoo.png",
     color: "#4a3aa7", segmentRank: 14,
     product: "Kabakoo AI Mentor",
     desc: "A 24/7 AI mentor that coaches West African youth through project-based upskilling, with local-language support such as Bambara.",
@@ -171,6 +185,8 @@ window.A2L_ORGS = [
   },
   {
     id: "living-goods", name: "Living Goods", short: "Living Goods", chip: "LG", cohort: 2026,
+    logo: "assets/cohort-logos/living-goods.png",
+    logoTone: "dark",
     color: "#008300", segmentRank: 3,
     product: "Next Generation Supervisor App",
     desc: "An AI-supported supervision app that turns community health data into targeted tasks for frontline health supervisors.",
@@ -185,6 +201,7 @@ window.A2L_ORGS = [
   },
   {
     id: "maisha-meds", name: "Maisha Meds", short: "Maisha Meds", chip: "MM", cohort: 2026,
+    logo: "assets/cohort-logos/maisha-meds.png",
     color: "#be185d", segmentRank: 9,
     product: "AI point-of-care messaging",
     desc: "AI-drafted pharmaceutical care messages based on point-of-sale data, reviewed by attendants and delivered to patients.",
@@ -199,6 +216,7 @@ window.A2L_ORGS = [
   },
   {
     id: "one-acre-fund", name: "One Acre Fund", short: "One Acre Fund", chip: "OAF", cohort: 2026,
+    logo: "assets/cohort-logos/one-acre-fund.svg",
     color: "#65a30d", segmentRank: 5,
     product: "Virtual Agronomist",
     desc: "A WhatsApp agronomy assistant, co-designed with iSDA, that gives hyper-localized fertilizer and planting advice through field teams.",
@@ -213,6 +231,7 @@ window.A2L_ORGS = [
   },
   {
     id: "raising-the-village", name: "Raising The Village", short: "RTV", chip: "RTV", cohort: 2026,
+    logo: "assets/cohort-logos/raising-the-village.svg",
     color: "#1baf7a", segmentRank: 16,
     product: "SBCC AI Coach",
     desc: "AI-personalized behavior-change coaching that field agents review and deliver to last-mile households.",

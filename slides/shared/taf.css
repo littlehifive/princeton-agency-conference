@@ -28,6 +28,7 @@ body {
   width: 1920px; height: 1080px;
   padding: 64px 120px 88px;
   display: flex; flex-direction: column;
+  position: relative;
 }
 /* Light-slide chrome. Titles sit high and compact; no kicker above them. */
 h1 {
@@ -60,15 +61,24 @@ h1 .accent { color: var(--gold); }
 }
 .logo-wrap svg { width: 52px; height: 52px; display: block; }
 .logo-wrap svg, .logo-wrap svg path { fill: var(--white); }
+.tf-logo { height: 48px; width: auto; display: block; }
 /* Gold-bar footnote */
-.footnote {
-  margin-top: 52px;
-  display: flex; align-items: flex-start; gap: 20px;
-  font-size: 25px; font-weight: 400; line-height: 1.45;
-  color: var(--ink-secondary);
-  max-width: 1560px;
+.footnote,
+.sources {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  bottom: 42px;
+  margin: 0;
+  display: flex; align-items: flex-start; gap: 16px;
+  font-size: 14px; font-weight: 500; line-height: 1.35;
+  color: var(--ink-muted);
+  max-width: none;
 }
-.footnote .mark { width: 6px; align-self: stretch; background: var(--gold); border-radius: 3px; flex-shrink: 0; }
+.footnote .mark,
+.sources .mark { width: 5px; min-height: 18px; align-self: stretch; background: var(--gold); border-radius: 3px; flex-shrink: 0; }
+.footnote a,
+.sources a { color: #336699; text-decoration: underline; text-underline-offset: 2px; }
 /* Numbered steps (activity slides) */
 .step { display: flex; gap: 32px; align-items: flex-start; }
 .step .num {

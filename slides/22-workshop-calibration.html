@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Workshops for agency signals</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .slide { padding: 58px 96px 108px; }
+  h1 { max-width: 1500px; font-size: 50px; }
+  .ws-layout { margin-top: 28px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: minmax(0, 1.24fr) 500px; gap: 34px; align-items: stretch; }
+  .ws-shot { min-height: 0; border: 1px solid rgba(11,35,65,0.18); border-radius: 8px;
+    overflow: hidden; background: #fff; box-shadow: var(--shadow-md); }
+  .ws-shot img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top left; }
+  .ws-side { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+  .ws-lead { margin: 0; padding: 22px 24px; background: var(--navy-deep);
+    border-radius: 8px; color: #E6EDF4; font-size: 24px; font-weight: 600; line-height: 1.36; }
+  .ws-lead .accent { color: var(--gold); font-weight: 800; }
+  .ws-points { display: grid; gap: 12px; }
+  .ws-point { display: grid; grid-template-columns: 38px 1fr; gap: 13px; align-items: start;
+    padding: 16px 18px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--surface); box-shadow: var(--shadow-md); }
+  .ws-num { width: 38px; height: 38px; border-radius: 50%; background: var(--gold);
+    color: var(--navy-deep); display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900; }
+  .ws-point p { margin: 0; font-size: 18px; line-height: 1.34; color: var(--ink-secondary); }
+  .ws-point strong { color: var(--navy); font-weight: 800; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>Workshops help NGOs identify <span class="accent">signals of agency</span> in human-AI conversations.</h1>
+    <p class="title-note" data-reveal>From abstract construct to labelable conversation evidence.</p>
+
+    <div class="ws-layout">
+      <div class="ws-shot" data-reveal>
+        <img src="assets/calibrate-demo.png" alt="Calibrate labeling interface screenshot for agency signals in AI conversations">
+      </div>
+      <div class="ws-side">
+        <p class="ws-lead" data-reveal>If agency matters to a product's theory of change, it has to be <span class="accent">measured as an outcome</span>, not treated as a nice story after launch.</p>
+        <div class="ws-points">
+          <div class="ws-point" data-reveal>
+            <span class="ws-num">1</span>
+            <p><strong>Ground labels in use cases.</strong> Participants label synthetic conversations inspired by accelerator products in maternal health, agriculture, and entrepreneurship.</p>
+          </div>
+          <div class="ws-point" data-reveal>
+            <span class="ws-num">2</span>
+            <p><strong>Use a simple binary rubric.</strong> Look for motivation, action and choice, links between advice and outcomes, and updated mental models.</p>
+          </div>
+          <div class="ws-point" data-reveal>
+            <span class="ws-num">3</span>
+            <p><strong>Keep the reasoning.</strong> Calibrate stores each label and the labeler's explanation, then runs an LLM judge with the same instructions.</p>
+          </div>
+          <div class="ws-point" data-reveal>
+            <span class="ws-num">4</span>
+            <p><strong>Use disagreement as data.</strong> Human-human, human-LLM, and score-note disagreement sharpen the rubric before scaling to more conversations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footnote" data-reveal>
+      <span class="mark"></span>
+      <span>Sources: <a href="https://agency-fund.github.io/taf-nairobi-agency-measurement-slides" target="_blank" rel="noopener">Nairobi agency measurement workshop slides</a> &middot; <a href="https://evals4good.substack.com/p/labeling-human-agency-in-human-ai" target="_blank" rel="noopener">Labeling human agency in human-AI conversations</a>.</span>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>
