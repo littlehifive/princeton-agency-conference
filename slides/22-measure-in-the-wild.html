@@ -8,84 +8,131 @@
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   h1 { max-width: 1680px; }
-  .mw-wrap { margin-top: 30px; flex: 1; min-height: 0; display: grid;
-    grid-template-columns: 1fr 1.15fr; gap: 40px; }
+  .mw-layout { margin-top: 24px; flex: 1; min-height: 0; display: grid;
+    grid-template-columns: 520px 1fr; gap: 26px; }
   .mw-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    box-shadow: var(--shadow-md); padding: 26px 32px; display: flex; flex-direction: column; min-height: 0; }
-  .mw-card .h { margin: 0 0 16px; font-size: 15px; font-weight: 800; letter-spacing: 0.1em;
+    box-shadow: var(--shadow-md); min-height: 0; }
+  .mw-method { padding: 24px 28px; display: flex; flex-direction: column; }
+  .eyebrow { margin: 0 0 15px; font-size: 14px; font-weight: 800; letter-spacing: 0.11em;
     text-transform: uppercase; color: var(--ink-muted); }
+  .mw-lead { margin: 0 0 18px; font-size: 25px; font-weight: 700; line-height: 1.28; color: var(--navy); }
+  .mw-point { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 14px 0;
+    border-top: 1px solid var(--border); }
+  .mw-point .num { color: var(--gold); font-size: 25px; font-weight: 900; line-height: 1.05;
+    font-variant-numeric: tabular-nums; }
+  .mw-point p { margin: 0; color: var(--ink-secondary); font-size: 18.5px; font-weight: 500;
+    line-height: 1.38; }
+  .mw-point strong { color: var(--ink); font-weight: 800; }
+  .mw-mini { margin-top: auto; background: var(--navy-deep); border-radius: 10px; padding: 18px 20px; }
+  .mw-mini p { margin: 0; color: #E6EDF4; font-size: 18px; font-weight: 600; line-height: 1.38; }
+  .mw-mini .accent { color: var(--gold); }
 
-  /* Why column */
-  .mw-why { flex: 1; display: flex; gap: 16px; align-items: center; padding: 15px 0; }
-  .mw-why + .mw-why { border-top: 1px solid var(--border); }
-  .mw-why svg { width: 24px; height: 24px; flex-shrink: 0; margin-top: 5px;
-    stroke: var(--gold-warm); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-  .mw-why p { margin: 0; font-size: 23px; font-weight: 400; line-height: 1.42; color: var(--ink-secondary); }
-  .mw-why p strong { font-weight: 700; color: var(--navy); }
-
-  /* How column */
-  .mw-step { flex: 1; display: flex; gap: 20px; align-items: center; padding: 14px 0; }
-  .mw-step + .mw-step { border-top: 1px solid var(--border); }
-  .mw-step .n { flex-shrink: 0; width: 44px; font-size: 30px; font-weight: 900; color: var(--gold);
-    line-height: 1.15; font-variant-numeric: tabular-nums; }
-  .mw-step .t { margin: 0; font-size: 23px; font-weight: 800; line-height: 1.25; color: var(--navy); }
-  .mw-step .d { margin: 4px 0 0; font-size: 21px; font-weight: 400; line-height: 1.4; color: var(--ink-secondary); }
-  .mw-step .d strong { font-weight: 700; color: var(--ink); }
-
-  .mw-panel { margin-top: 26px; background: var(--navy-deep); border-radius: 12px; padding: 24px 32px; }
-  .mw-panel p { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.45; color: #E6EDF4; }
-  .mw-panel p .accent { color: var(--gold); font-weight: 700; }
+  .partner-wrap { min-height: 0; display: flex; flex-direction: column; }
+  .partner-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr); gap: 14px; }
+  .partner { padding: 16px 18px; display: flex; flex-direction: column; }
+  .partner-head { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center;
+    padding-bottom: 11px; border-bottom: 1px solid var(--border); }
+  .logo-box { width: 96px; height: 54px; border-radius: 8px; background: #FFFFFF;
+    border: 1px solid #E7EBEF; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .logo-box img { max-width: 76px; max-height: 42px; object-fit: contain; display: block; }
+  .logo-box.wordmark img { max-width: 88px; max-height: 38px; }
+  .logo-box.scale-up img { transform: scale(1.24); }
+  .org-name { margin: 0; font-size: 20px; font-weight: 800; line-height: 1.16; color: var(--navy); }
+  .org-meta { margin: 4px 0 0; color: var(--ink-muted); font-size: 12.5px; font-weight: 700;
+    line-height: 1.25; letter-spacing: 0.08em; text-transform: uppercase; }
+  .signal { margin: 12px 0 0; color: var(--ink-secondary); font-size: 17px; font-weight: 500;
+    line-height: 1.34; }
+  .signal strong { color: var(--ink); font-weight: 800; }
+  .partner-kicker { margin-top: 14px; border-left: 6px solid var(--gold); padding-left: 17px;
+    color: var(--ink-secondary); font-size: 18px; font-weight: 600; line-height: 1.36; }
+  .partner-kicker strong { color: var(--navy); }
 </style>
 </head>
 <body>
   <div class="slide">
     <h1 data-reveal>The flagship study: measure agency <span class="accent">where it already shows</span></h1>
-    <p class="title-note" data-reveal>Research &middot; with Hamsa Bastani and Osbert Bastani, University of Pennsylvania &middot; the team behind the PNAS 2025 guardrails study</p>
+    <p class="title-note" data-reveal><a href="https://docs.google.com/document/d/1Z86k2Lu5sTsHuFTMUlIulU-dwQBLMBIEjHVwrYv8nlU/edit?tab=t.0#heading=h.b4qd6l121gg9" target="_blank" rel="noopener">Proposal</a> &middot; with Hamsa Bastani and Osbert Bastani, University of Pennsylvania &middot; six NGO partners</p>
 
-    <div class="mw-wrap">
-      <div class="mw-card" data-reveal>
-        <p class="h">Why naturalistic data</p>
-        <div class="mw-why">
-          <svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg>
-          <p>Digital platforms already produce the evidence: <strong>conversations, decisions</strong>, and, where partners can link them, <strong>real outcomes</strong>.</p>
+    <div class="mw-layout">
+      <div class="mw-card mw-method" data-reveal>
+        <p class="eyebrow">Main ideas from the proposal</p>
+        <p class="mw-lead">Use AI to infer whether digital platforms strengthen people's ability to pursue their own goals.</p>
+
+        <div class="mw-point">
+          <span class="num">1</span>
+          <p><strong>Start from real traces:</strong> text, voice, video, decisions, and linked outcomes from live platforms.</p>
         </div>
-        <div class="mw-why">
-          <svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg>
-          <p>Surveys, today's default, <strong>interrupt people</strong>, carry self-report bias, and sample thin snapshots in time.</p>
+        <div class="mw-point">
+          <span class="num">2</span>
+          <p><strong>Judge agency, not just success:</strong> score intentionality, forethought, self-reactiveness, and self-reflectiveness.</p>
         </div>
-        <div class="mw-why">
-          <svg viewBox="0 0 24 24"><path d="M4 12h14m-5-6 6 6-6 6"/></svg>
-          <p>Traces are continuous: agency can be observed <strong>as it develops</strong>, unobtrusively, over months instead of moments.</p>
+        <div class="mw-point">
+          <span class="num">3</span>
+          <p><strong>Track change over time:</strong> estimate agency at key moments and mark uncertainty when evidence is thin.</p>
+        </div>
+        <div class="mw-point">
+          <span class="num">4</span>
+          <p><strong>Validate lightly:</strong> combine expert labels with targeted micro-surveys where they add the most information.</p>
+        </div>
+
+        <div class="mw-mini">
+          <p>The practical output is a <span class="accent">shared measurement instrument</span> that helps product teams improve outcomes and agency together.</p>
         </div>
       </div>
 
-      <div class="mw-card" data-reveal="right">
-        <p class="h">How the method works</p>
-        <div class="mw-step">
-          <span class="n">1</span>
-          <div><p class="t">Transcripts</p>
-          <p class="d">Text, voice, and video from real platform use.</p></div>
-        </div>
-        <div class="mw-step">
-          <span class="n">2</span>
-          <div><p class="t">LLM judge</p>
-          <p class="d">Reads them against a structured rubric grounded in Social Cognitive Theory: <strong>intentionality, forethought, self-reactiveness, self-reflectiveness</strong>.</p></div>
-        </div>
-        <div class="mw-step">
-          <span class="n">3</span>
-          <div><p class="t">Calibrated scores</p>
-          <p class="d">Agency scores that carry uncertainty and say so when the evidence is missing.</p></div>
-        </div>
-        <div class="mw-step">
-          <span class="n">4</span>
-          <div><p class="t">Validation</p>
-          <p class="d">Expert labels and lightweight micro-surveys check the judge where it matters most.</p></div>
-        </div>
-      </div>
-    </div>
+      <div class="partner-wrap" data-reveal="right">
+        <div class="partner-grid">
+          <div class="mw-card partner">
+            <div class="partner-head">
+              <div class="logo-box scale-up"><img src="assets/partner-logos/jacaranda.png" alt="Jacaranda Health logo"></div>
+              <div><p class="org-name">Jacaranda Health</p><p class="org-meta">Health &middot; Kenya</p></div>
+            </div>
+            <p class="signal"><strong>Agency signal:</strong> how mothers ask, decide, and follow care pathways in PROMPTS conversations, linked where possible to care-seeking and visits.</p>
+          </div>
 
-    <div class="mw-panel" data-reveal>
-      <p>The goal is a <span class="accent">shared, validated instrument</span> for reading agency in the wild, built and tested with six NGO partners.</p>
+          <div class="mw-card partner">
+            <div class="partner-head">
+              <div class="logo-box"><img src="assets/partner-logos/digital-green.svg" alt="Digital Green logo"></div>
+              <div><p class="org-name">Digital Green</p><p class="org-meta">Livelihoods &middot; Kenya, Ethiopia, India</p></div>
+            </div>
+            <p class="signal"><strong>Agency signal:</strong> whether FarmerChat users move from advice-seeking to applying or sharing agronomy guidance across product versions.</p>
+          </div>
+
+          <div class="mw-card partner">
+            <div class="partner-head">
+              <div class="logo-box wordmark scale-up"><img src="assets/partner-logos/kabakoo.png" alt="Kabakoo Academies logo"></div>
+              <div><p class="org-name">Kabakoo Academies</p><p class="org-meta">Livelihoods &middot; Mali</p></div>
+            </div>
+            <p class="signal"><strong>Agency signal:</strong> learner voice/video reflections that reveal goals, confidence, follow-through, and later livelihood progress.</p>
+          </div>
+
+          <div class="mw-card partner">
+            <div class="partner-head">
+              <div class="logo-box"><img src="assets/partner-logos/nova-escola.png" alt="Nova Escola logo"></div>
+              <div><p class="org-name">Nova Escola</p><p class="org-meta">Education &middot; Brazil</p></div>
+            </div>
+            <p class="signal"><strong>Agency signal:</strong> how teachers use a WhatsApp lesson-planning copilot to co-create, adapt, and reuse classroom plans.</p>
+          </div>
+
+          <div class="mw-card partner">
+            <div class="partner-head">
+              <div class="logo-box wordmark scale-up"><img src="assets/partner-logos/tap.png" alt="The Apprentice Project logo"></div>
+              <div><p class="org-name">The Apprentice Project</p><p class="org-meta">Education &middot; India</p></div>
+            </div>
+            <p class="signal"><strong>Agency signal:</strong> students' creativity, persistence, and next choices after TAP Buddy feedback, including mother-tongue voice interactions.</p>
+          </div>
+
+          <div class="mw-card partner">
+            <div class="partner-head">
+              <div class="logo-box wordmark scale-up"><img src="assets/partner-logos/udhyam.png" alt="Udhyam Learning Foundation logo"></div>
+              <div><p class="org-name">Udhyam Learning Foundation</p><p class="org-meta">Education &middot; India</p></div>
+            </div>
+            <p class="signal"><strong>Agency signal:</strong> chat and submission traces that show grit, motivation, self-efficacy, and entrepreneurial follow-through.</p>
+          </div>
+        </div>
+        <div class="partner-kicker"><strong>Six live products</strong> give the study naturalistic conversations across health, learning, livelihoods, languages, and modalities.</div>
+      </div>
     </div>
   </div>
 <script src="shared/anim.js"></script>

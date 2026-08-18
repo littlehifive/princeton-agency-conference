@@ -4,12 +4,15 @@
      node shoot.mjs <slidesDir> <outDir>
    Requires: npm i playwright (and `npx playwright install chromium` once). */
 import { chromium } from 'playwright';
-import { readdirSync, mkdirSync } from 'fs';
+import { readdirSync, mkdirSync, rmSync } from 'fs';
 import path from 'path';
 
 const slidesDir = path.resolve(process.argv[2] || 'slides');
 const outDir = path.resolve(process.argv[3] || '_verify');
 mkdirSync(outDir, { recursive: true });
+for (const f of readdirSync(outDir)) {
+  if (f.endsWith('.png')) rmSync(path.join(outDir, f));
+}
 
 const slides = readdirSync(slidesDir).filter(f => f.endsWith('.html')).sort();
 const browser = await chromium.launch();

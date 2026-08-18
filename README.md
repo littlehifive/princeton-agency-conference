@@ -1,6 +1,6 @@
 # The Agency & AI Lab (A²L): Introduction Deck
 
-A 24-slide HTML presentation introducing the Agency & AI Lab (A²L), a decentralized,
+A 23-slide HTML presentation introducing the Agency & AI Lab (A²L), a decentralized,
 virtual, and open research and learning lab incubated at The Agency Fund. The deck pitches
 the lab's two jobs to funders, practitioners, and researchers: design AI that strengthens
 human agency in the social sector, and measure how agency evolves as people use AI. After
@@ -17,7 +17,7 @@ Contact: Zezhen (Michael) Wu, <zezhen@agency.fund>
 
 | Path | What |
 |------|------|
-| `index.html` + `slides/` | The 24-slide HTML deck (TAF web design system). Double-click `index.html`; arrow keys to present; works offline. |
+| `index.html` + `slides/` | The 23-slide HTML deck (TAF web design system). Double-click `index.html`; arrow keys to present; works offline. |
 | `a2l-intro-deck.pdf` | Vector PDF export of the deck (backup / sharing). |
 | `slides/shared/` | Shared tokens, animation framework, and the self-hosted Montserrat font. |
 | `slides/assets/` | Screenshots embedded in the deck (NotebookLM, PNAS paper, intervention mapping, Claude Skills, behavioural-skills site, TAF x Jigsaw blog). |
@@ -47,9 +47,8 @@ Contact: Zezhen (Michael) Wu, <zezhen@agency.fund>
 19. The 2x2 framework for agency measurement
 20. The four-level GenAI evaluation framework (agency sits at Level 3)
 21. Three steps: define locally, measure well, validate iteratively
-22. The flagship study: measuring agency in naturalistic data (with Penn's LLM-judge method)
-23. The six-NGO cohort: what we might learn with each partner
-24. Close
+22. The flagship study and six NGO partners: measuring agency in naturalistic data with live products
+23. Close
 
 Slides 2, 6, 19, 20, and 21 reuse content from the
 [Nairobi agency measurement workshop deck](https://github.com/agency-fund/taf-nairobi-agency-measurement-slides)
