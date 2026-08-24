@@ -1,10 +1,10 @@
-# The Agency & AI Lab (A²L): Introduction Deck
+# The Agency & AI Collaborative (A²C): Introduction Deck
 
-A 24-slide HTML presentation introducing the Agency & AI Lab (A²L), a decentralized,
-virtual, and open research and learning lab incubated at The Agency Fund. The deck pitches
-the lab's two jobs to funders, practitioners, and researchers: design AI that strengthens
+A 24-slide HTML presentation introducing the Agency & AI Collaborative (A²C), a decentralized,
+virtual, and open research and learning collaborative incubated at The Agency Fund. The deck pitches
+the collaborative's two jobs to funders, practitioners, and researchers: design AI that strengthens
 human agency in the social sector, and measure how agency evolves as people use AI. After
-the research evidence and the two gaps, it showcases the lab's work in three bodies: learning
+the research evidence and the two gaps, it showcases the collaborative's work in three bodies: learning
 projects (repeatable motions), research on designing AI for agency, and research on
 measuring agency.
 
