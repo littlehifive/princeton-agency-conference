@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A quick question: “agency” in your language</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  /* Dark full-bleed interlude: one question, centered on the slide. */
+  body.dark .slide { justify-content: center; align-items: center; position: relative; padding: 130px 150px;
+    background: radial-gradient(120% 120% at 30% 20%, #0B2341, #061A2E 75%); }
+  .lq-wrap { text-align: center; max-width: 1520px; }
+  .lq-question { margin: 0; font-size: 66px; font-weight: 700; line-height: 1.3;
+    letter-spacing: -0.015em; color: var(--white); }
+  .lq-question .word { color: var(--gold); }
+  .lq-ask { margin: 64px 0 0; font-size: 84px; font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--gold); }
+</style>
+</head>
+<body class="dark">
+  <div class="slide">
+    <div class="lq-wrap">
+      <p class="lq-question" data-reveal>If you speak a second language, think about the word <span class="word">&ldquo;agency&rdquo;</span> in your own language.</p>
+      <p class="lq-ask" data-reveal="scale">Is there a good translation?</p>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>
