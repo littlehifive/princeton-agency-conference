@@ -15,14 +15,11 @@
   }
   .slide { padding: 54px 86px 46px; }
   h1 { max-width: 1748px; font-size: 52px; line-height: 1.08; }
-  .buzzword-note {
-    position: absolute; top: 62px; right: 88px;
-    font-size: 16px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--navy); opacity: 0.58;
-  }
+  .title-note { margin-top: 10px; max-width: 1748px; font-size: 22px; }
+  .title-note strong { color: var(--navy); font-weight: 700; }
   .collage {
     position: relative;
-    margin-top: 22px;
+    margin-top: 16px;
     height: 758px;
     overflow: hidden;
     isolation: isolate;
@@ -87,41 +84,28 @@
   .c-forbes-1 { left: 1088px; top: 36px; width: 616px; height: 348px; transform: rotate(-2.1deg); z-index: 5; }
   .c-springer { left: 50px; top: 332px; width: 566px; height: 334px; transform: rotate(2.5deg); z-index: 7; }
   .c-stockholm { left: 616px; top: 354px; width: 522px; height: 292px; transform: rotate(-4deg); z-index: 6; }
-  .c-nature { left: 1076px; top: 342px; width: 588px; height: 328px; transform: rotate(3.6deg); z-index: 4; }
+  .c-nature { left: 852px; top: 514px; width: 520px; height: 254px; transform: rotate(3deg); z-index: 10; }
   .c-wharton { left: 350px; top: 512px; width: 486px; height: 244px; transform: rotate(-7deg); z-index: 9; }
-  .c-forbes-2 { left: 852px; top: 514px; width: 520px; height: 254px; transform: rotate(3deg); z-index: 10; }
-  .c-springer-2 { left: 1346px; top: 526px; width: 386px; height: 222px; transform: rotate(-5deg); z-index: 11; }
-  .stamp {
-    position: absolute;
-    left: 1126px; top: 304px;
-    z-index: 15;
-    padding: 18px 25px;
-    border: 3px solid var(--gold);
-    border-radius: 4px;
-    background: rgba(11,35,65,0.92);
-    color: var(--white);
-    transform: rotate(-5deg);
-    box-shadow: 0 18px 32px rgba(11,35,65,0.26);
-  }
-  .stamp p { margin: 0; }
-  .stamp .big { font-size: 40px; font-weight: 900; letter-spacing: 0.02em; }
-  .stamp .small {
-    margin-top: 3px;
-    font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--gold);
-  }
+  .c-springer-2 { left: 1316px; top: 526px; width: 386px; height: 222px; transform: rotate(-5deg); z-index: 9; }
+  /* New: the sourced buzzword evidence. CNN "Word of the Week" is the feature; the ANA word-of-the-year note sits top right. */
+  .c-cnn { left: 1104px; top: 296px; width: 566px; height: 320px; transform: rotate(-3deg); z-index: 15; }
+  .c-ana { left: 1292px; top: -4px; width: 396px; height: 202px; transform: rotate(4deg); z-index: 12; }
+  .c-ana img { object-position: left top; }
+  .clip.feature .strip { background: var(--gold); border-top-color: rgba(11,35,65,0.12); }
+  .clip.feature .strip span { color: var(--navy-deep); }
 </style>
 </head>
 <body>
   <div class="slide">
     <h1 data-reveal>AI can <span class="accent">expand</span> agency, and it can hamper it.</h1>
+    <p class="title-note" data-reveal><strong>Agency is the AI-era buzzword:</strong> "agentic" was CNN's Word of the Week in March 2026, and the Association of National Advertisers picked "agentic AI" as a 2025 Marketing Word of the Year.</p>
 
     <div class="collage" data-reveal>
       <figure class="clip paper c-jigsaw">
         <img src="assets/agency-collage/jigsaw.png" alt="Jigsaw article screenshot: A new perspective on human agency for the AI era">
         <figcaption class="strip"><span>Jigsaw</span><span>human agency for the AI era</span></figcaption>
       </figure>
-      <figure class="clip paper feature c-pnas">
+      <figure class="clip paper c-pnas">
         <img src="assets/agency-collage/pnas.png" alt="PNAS paper screenshot: Generative AI without guardrails can harm learning">
         <figcaption class="strip"><span>PNAS</span><span>guardrails can harm learning</span></figcaption>
       </figure>
@@ -145,24 +129,26 @@
         <img src="assets/agency-collage/wharton-cognitive-surrender.png" alt="Wharton article screenshot: Thinking Fast, Slow, Artificially">
         <figcaption class="strip"><span>Wharton</span><span>cognitive surrender</span></figcaption>
       </figure>
-      <figure class="clip c-forbes-2">
-        <img src="assets/agency-collage/forbes-real-world-agency.png" alt="Forbes article screenshot: real-world agency">
-        <figcaption class="strip"><span>Forbes</span><span>real-world agency</span></figcaption>
-      </figure>
       <figure class="clip paper c-springer-2">
         <img src="assets/agency-collage/springer-agency-alignment.png" alt="Springer paper screenshot: Agency and alignment">
         <figcaption class="strip"><span>AI &amp; Society</span><span>agency and alignment</span></figcaption>
       </figure>
 
-      <div class="stamp" aria-hidden="true">
-        <p class="big">AGENCY</p>
-        <p class="small">the AI-era buzzword</p>
-      </div>
+      <figure class="clip c-ana">
+        <img src="assets/agency-collage/ana-word-of-the-year.png" alt="ANA press release screenshot: ANA Selects Agentic AI and Authenticity as 2025 Marketing Words of the Year">
+        <figcaption class="strip"><span>ANA</span><span>2025 word of the year: agentic AI</span></figcaption>
+      </figure>
+      <figure class="clip feature c-cnn">
+        <img src="assets/agency-collage/cnn-agentic-word-of-week.png" alt="CNN article screenshot: In the AI industry, 'agentic' takes on a life of its own">
+        <figcaption class="strip"><span>CNN</span><span>Word of the Week: "agentic"</span></figcaption>
+      </figure>
     </div>
 
     <div class="sources" data-reveal>
       <span class="mark"></span>
       <span>Sources:
+        <a href="https://www.cnn.com/2026/03/25/us/word-of-week-agentic-ai-cec" target="_blank" rel="noopener">CNN Word of the Week</a>;
+        <a href="https://www.ana.net/content/show/id/pr-2025-12-word-year" target="_blank" rel="noopener">ANA 2025 Word of the Year</a>;
         <a href="https://medium.com/jigsaw/a-new-perspective-on-human-agency-for-the-ai-era-cd785faab026" target="_blank" rel="noopener">Jigsaw</a>;
         <a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., PNAS</a>;
         <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6097646" target="_blank" rel="noopener">Shaw &amp; Nave, SSRN</a>;

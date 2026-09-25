@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Raising The Village SBCC Coach study</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { max-width: 1660px; }
+
+  /* ── Diagram canvas (1680 x 520, absolute layout) ── */
+  .dg { position: relative; margin-top: 26px; width: 1680px; height: 520px; }
+  .wires { position: absolute; left: 0; top: 0; width: 1680px; height: 520px; overflow: visible; }
+
+  .node { position: absolute; width: 320px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .node .ic { position: relative; width: 150px; height: 150px; border-radius: 50%; background: var(--surface);
+    border: 2px solid var(--border); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; }
+  .node .ic svg { width: 90px; height: 90px; display: block; }
+  .node .ic svg * { fill: none; stroke: var(--navy); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .node .ic svg .g  { stroke: var(--gold); }
+  .node .ic svg .gf { fill: var(--gold); stroke: none; }
+  .node .lab { margin: 16px 0 0; font-size: 24px; font-weight: 800; color: var(--navy); line-height: 1.2; }
+  .node .sub { margin: 6px 0 0; font-size: 18px; font-weight: 500; line-height: 1.35; color: var(--ink-secondary); max-width: 300px; }
+  .n-ai        { left: 30px;   top: 140px; }
+  .n-coach     { left: 620px;  top: 140px; }
+  .n-household { left: 1140px; top: 140px; }
+  .n-ai .ic { border-color: var(--gold); }
+  .n-ai .ic::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; pointer-events: none;
+    animation: pulse 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(241,181,5,0.45); } 100% { box-shadow: 0 0 0 28px rgba(241,181,5,0); } }
+  /* Behavioral-science input chip above the AI node */
+  .bs-chip { position: absolute; left: 190px; top: 56px; transform: translateX(-50%); white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-md);
+    font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); z-index: 2; }
+  .bs-chip svg { width: 24px; height: 24px; display: block; }
+  .bs-chip svg * { fill: none; stroke: var(--gold-warm); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Message stream: AI -> tablet (stage 1) */
+  .stream-lab { position: absolute; left: 280px; top: 158px; width: 280px; text-align: center; font-size: 16px; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-warm); }
+  .mcard { position: absolute; left: 300px; top: 196px; width: 104px; padding: 7px 9px; border-radius: 8px; background: var(--surface);
+    border: 1px solid var(--gold); box-shadow: var(--shadow-md); z-index: 2; }
+  body.st1 .mcard { animation: m-go 7.2s linear infinite; }
+  .mcard b { display: block; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; color: var(--gold-warm); margin-bottom: 2px; }
+  .mcard i { display: block; height: 4px; border-radius: 2px; background: rgba(0,51,102,0.28); margin: 4px 0; }
+  .mcard i:nth-of-type(1) { width: 80px; } .mcard i:nth-of-type(2) { width: 58px; } .mcard i:nth-of-type(3) { width: 70px; }
+  .mcard.m2 { animation-delay: -3.6s; }
+  @keyframes m-go { 0% { transform: translateX(0); opacity: 0; } 8% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateX(290px); opacity: 0; } }
+  .stream { stroke: var(--gold); stroke-width: 4; stroke-dasharray: 12 10; animation: dash 1.2s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -44; } }
+
+  /* Footpath: coach -> household */
+  .path { stroke: #003366; stroke-width: 3; stroke-dasharray: 3 12; animation: walk 1.4s linear infinite; }
+  @keyframes walk { to { stroke-dashoffset: -30; } }
+  .path-lab { position: absolute; left: 900px; top: 158px; width: 300px; text-align: center; font-size: 16px; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+
+  /* Household topics (right column) */
+  .topics { position: absolute; left: 1466px; top: 112px; width: 214px; display: flex; flex-direction: column; gap: 10px; }
+  .topic { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px; background: var(--surface);
+    border: 1px solid var(--border); box-shadow: var(--shadow-md); font-size: 16px; font-weight: 700; line-height: 1.15; color: var(--navy); }
+  .topic svg { width: 26px; height: 26px; flex-shrink: 0; display: block; }
+  .topic svg * { fill: none; stroke: var(--gold-warm); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .topic.more { color: var(--ink-muted); font-weight: 600; }
+  .topic.more svg * { stroke: var(--ink-muted); }
+
+  /* On-the-ground context feeding the coach (stage 2) */
+  .ctx { position: absolute; left: 616px; top: 8px; width: 328px; display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+    border-radius: 12px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-md); z-index: 2; }
+  .ctx svg { width: 30px; height: 30px; flex-shrink: 0; }
+  .ctx svg * { fill: none; stroke: var(--gold-warm); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .ctx p { margin: 0; font-size: 15px; line-height: 1.3; color: var(--ink-secondary); }
+  .ctx p strong { display: block; color: var(--navy); font-weight: 800; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1px; }
+
+  /* Agency ring (stage 2) */
+  .ring { position: absolute; left: 560px; top: -8px; width: 440px; height: 484px; border: 3px dashed var(--gold); border-radius: 28px;
+    pointer-events: none; }
+  .ring .tag { position: absolute; left: -2px; bottom: -20px; padding: 7px 14px; border-radius: 6px; background: var(--gold);
+    color: var(--navy-deep); font-size: 15px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+
+  .panel { margin-top: 18px; background: var(--navy-deep); border-radius: 12px; padding: 24px 30px; }
+  .panel p { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.42; color: #E6EDF4; }
+  .panel p strong { color: var(--white); font-weight: 800; }
+  .panel p .accent { color: var(--gold); font-weight: 700; }
+
+  /* Click-staged reveal: coach and household -> AI messages -> the agency question */
+  .st { opacity: 0; transform: translateY(18px); }
+  .bs-chip.st { transform: translateX(-50%) translateY(18px); }
+  body.st1 .bs-chip.st { transform: translateX(-50%); }
+  .st {
+    transition: opacity 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  svg .st { transform: none; }
+  body.st1 .st.s1, body.st2 .st.s2 { opacity: 1; transform: none; }
+  body.rtv-more { cursor: pointer; }
+  .rtv-hint { position: absolute; left: 120px; bottom: 14px; display: none; align-items: center; gap: 10px;
+    font-size: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted);
+    transition: opacity 0.4s ease; }
+  .rtv-hint .dot-h { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); }
+  .rtv-hint.done { opacity: 0 !important; }
+
+  body.anim-static .st, body.anim-static .rtv-hint { transition: none !important; }
+  body.anim-static .rtv-hint { display: none; }
+  body.anim-static .mcard, body.anim-static .stream, body.anim-static .path, body.anim-static .n-ai .ic::after { animation: none !important; }
+  body.anim-static .mcard.m1 { transform: translateX(36px); }
+  body.anim-static .mcard.m2 { transform: translateX(196px); }
+  @media (prefers-reduced-motion: reduce) {
+    .mcard, .stream, .path, .n-ai .ic::after { animation: none !important; }
+  }
+  @media print {
+    .st { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .rtv-hint { display: none !important; }
+    .mcard, .stream, .path, .n-ai .ic::after { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <h1 data-reveal>Designing AI-personalized coaching to <span class="accent">support field-agent agency</span> in household behavior change</h1>
+    <p class="title-note" data-reveal>A design and evaluation study with Raising The Village's SBCC AI Coach</p>
+
+    <div class="dg" data-reveal>
+      <svg class="wires" viewBox="0 0 1680 520" aria-hidden="true">
+        <defs>
+          <marker id="arrNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#003366"/>
+          </marker>
+          <marker id="arrGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F1B505"/>
+          </marker>
+        </defs>
+        <!-- behavioral science -> AI (stage 1) -->
+        <line class="st s1" x1="190" y1="100" x2="190" y2="132" stroke="#F1B505" stroke-width="3" marker-end="url(#arrGold)"/>
+        <!-- AI -> coach's tablet (stage 1) -->
+        <line class="stream st s1" x1="272" y1="215" x2="700" y2="215" marker-end="url(#arrGold)"/>
+        <!-- coach walks to the household -->
+        <line class="path" x1="866" y1="215" x2="1290" y2="215" marker-end="url(#arrNavy)"/>
+        <!-- what the coach sees -> coach (stage 2) -->
+        <line class="st s2" x1="780" y1="72" x2="780" y2="132" stroke="#F1B505" stroke-width="3" marker-end="url(#arrGold)"/>
+      </svg>
+
+      <!-- SBCC AI Coach (stage 1) -->
+      <div class="bs-chip st s1">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M11 6.5a5 5 0 0 1 5 0 5 5 0 0 1 5 0 5 5 0 0 1 5 5v9a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5v-9a5 5 0 0 1 5-5z"/>
+          <path d="M16 6.5v19M12 12h2M18 12h2M11 17h3M18 17h3"/>
+        </svg>
+        Behavioral science built in
+      </div>
+      <div class="node n-ai st s1">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <rect x="16" y="16" width="32" height="32" rx="7"/>
+            <path d="M26 8v8M32 8v8M38 8v8M26 48v8M32 48v8M38 48v8M8 26h8M8 32h8M8 38h8M48 26h8M48 32h8M48 38h8"/>
+            <path class="gf" d="M32 22l2.7 6.3 6.3 2.7-6.3 2.7L32 40l-2.7-6.3-6.3-2.7 6.3-2.7z"/>
+          </svg>
+        </div>
+        <p class="lab">SBCC AI Coach</p>
+        <p class="sub">Generates a coaching message for each household, drawing on behavioral-science theory and practice</p>
+      </div>
+      <p class="stream-lab st s1">messages to the tablet</p>
+      <div class="mcard m1 st s1" aria-hidden="true"><b>MESSAGE</b><i></i><i></i><i></i></div>
+      <div class="mcard m2 st s1" aria-hidden="true"><b>MESSAGE</b><i></i><i></i><i></i></div>
+
+      <!-- Graduation coach with tablet -->
+      <div class="node n-coach">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <circle cx="27" cy="14" r="8"/>
+            <path d="M9 57v-7a18 18 0 0 1 18-18h3"/>
+            <path d="M30 32l9 6"/>
+            <rect class="g" x="39" y="35" width="18" height="23" rx="3"/>
+            <path class="g" d="M43 41h10M43 46h10M43 51h6"/>
+          </svg>
+        </div>
+        <p class="lab">Graduation coach</p>
+        <p class="sub">Reads the messages on a tablet and delivers them in person during field visits</p>
+      </div>
+      <p class="path-lab">field visit</p>
+
+      <!-- What the coach sees on the ground (stage 2) -->
+      <div class="ctx st s2">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M2 16s5-8 14-8 14 8 14 8-5 8-14 8S2 16 2 16z"/><circle cx="16" cy="16" r="4"/>
+        </svg>
+        <p><strong>What the coach sees on the ground</strong>A sick child, rain that delayed planting, no cash this week</p>
+      </div>
+
+      <!-- Ultra-poor household -->
+      <div class="node n-household">
+        <div class="ic" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <path d="M8 30L32 10l24 20"/>
+            <path d="M13 26v31h38V26"/>
+            <circle cx="24" cy="38" r="4"/>
+            <circle cx="40" cy="38" r="4"/>
+            <path d="M17 57v-3a7 7 0 0 1 7-7M47 57v-3a7 7 0 0 0-7-7"/>
+            <circle class="g" cx="32" cy="44" r="3.2"/>
+            <path class="g" d="M27 57v-3a5 5 0 0 1 10 0v3"/>
+          </svg>
+        </div>
+        <p class="lab">Ultra-poor household</p>
+        <p class="sub">Coached through the graduation program across Uganda, Rwanda, and the DRC</p>
+      </div>
+      <div class="topics">
+        <div class="topic"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28V16M16 20c0-6 4-9 10-9 0 6-4 9-10 9zM16 16c0-6-4-9-10-9 0 6 4 9 10 9z"/></svg>Farming</div>
+        <div class="topic"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a8 8 0 0 0-5 14.2V22h10v-3.8A8 8 0 0 0 16 4zM13 26h6"/></svg>Mindset</div>
+        <div class="topic"><svg viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="9" rx="9" ry="3.5"/><path d="M7 9v6c0 2 4 3.5 9 3.5s9-1.5 9-3.5V9M7 15v6c0 2 4 3.5 9 3.5s9-1.5 9-3.5v-6"/></svg>Financial literacy</div>
+        <div class="topic"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4s-8 9-8 15a8 8 0 0 0 16 0c0-6-8-15-8-15zM16 16v6M13 19h6"/></svg>Health and sanitation</div>
+        <div class="topic more"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="8" cy="16" r="1.8"/><circle cx="16" cy="16" r="1.8"/><circle cx="24" cy="16" r="1.8"/></svg>and more</div>
+      </div>
+
+      <!-- The agency question (stage 2) -->
+      <div class="ring st s2" aria-hidden="true"><span class="tag">The agency question</span></div>
+    </div>
+
+    <div class="panel st s2">
+      <p><strong>The agency question sits with the coach:</strong> how do we align AI-generated messages with what the coach can flexibly deliver, given the situations they meet on the ground? The messages have to <span class="accent">support the coach's judgment, not script it.</span></p>
+    </div>
+
+    <div class="rtv-hint" id="rtvHint" data-reveal><span class="dot-h"></span><span id="rtvHintText">Click or arrow key to reveal &middot; 2 left</span></div>
+    <div class="footnote" data-reveal>
+      <span class="mark"></span>
+      <span>Pilot to date: 2,208 AI-generated messages across 333 household check-ins, 98.3% rated helpful by field agents. A cluster-randomized personalization trial is planned for the 2026B-2027 cycle. SBCC: social and behavior change communication.</span>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Click-staged reveal: the coaching visit, then the AI messages, then the agency question. */
+(function () {
+  var stage = 0, MAX = 2;
+  var hint = document.getElementById('rtvHint');
+  var hintText = document.getElementById('rtvHintText');
+  function render() {
+    for (var i = 1; i <= MAX; i++) document.body.classList.toggle('st' + i, stage >= i);
+    document.body.classList.toggle('rtv-more', stage < MAX);
+    var left = MAX - stage;
+    if (left === 0) hint.classList.add('done');
+    else hintText.textContent = 'Click or arrow key to reveal · ' + left + ' left';
+  }
+  document.addEventListener('click', function () {
+    if (stage < MAX) { stage++; render(); }
+  });
+  /* Arrow keys drive the stages first; once exhausted they fall through to the
+     deck shell (registered after this listener) and page as usual. */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      if (stage < MAX) { e.preventDefault(); e.stopImmediatePropagation(); stage++; render(); }
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      if (stage > 0) { e.preventDefault(); e.stopImmediatePropagation(); stage--; render(); }
+    }
+  });
+  window.addEventListener('beforeprint', function () { stage = MAX; render(); });
+  if (/[?&]static=1/.test(location.search)) stage = MAX;
+  render();
+})();
+</script>
+<script>
+/* Deck-shell integration. Keep verbatim. */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else { window.parent.postMessage({ deckFontsReady: true }, '*'); }
+})();
+</script>
+</body>
+</html>

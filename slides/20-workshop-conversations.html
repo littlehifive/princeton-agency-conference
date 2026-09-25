@@ -2,20 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Two conversations</title>
+<title>Workshops for agency signals</title>
 <link rel="stylesheet" href="shared/fonts.css">
 <link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
-  .slide { padding-bottom: 96px; position: relative; }
-  h1 { max-width: 1700px; }
-  .cc-row { margin-top: 24px; flex: 1; min-height: 0; display: grid;
+  /* The two-line title needs the vertical room back: tighter title, row gap, and bottom padding
+     so the final reply bubble in each conversation stays fully visible. */
+  .slide { padding-top: 56px; padding-bottom: 66px; position: relative; }
+  h1 { max-width: 1760px; font-size: 44px; }
+  .cc-row { margin-top: 14px; flex: 1; min-height: 0; display: grid;
     grid-template-columns: 660px 660px; gap: 72px; justify-content: center; }
 
   /* Phone column: chip header + device frame */
   .ph-col { display: flex; flex-direction: column; min-height: 0; }
   .ph-chip { align-self: flex-start; font-size: 16px; font-weight: 800; letter-spacing: 0.1em;
-    text-transform: uppercase; border-radius: 6px; padding: 7px 16px; margin-bottom: 10px; }
+    text-transform: uppercase; border-radius: 6px; padding: 6px 16px; margin-bottom: 8px; }
   .ph-chip.info { background: var(--border); color: var(--ink-secondary); }
   .ph-chip.agency { background: var(--gold); color: var(--navy-deep); }
   .phone { flex: 1; min-height: 0; background: #111418; border-radius: 40px; padding: 12px;
@@ -65,7 +67,7 @@
     transition: opacity 0.4s ease; }
   .cc-hint .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); }
   .cc-hint.done { opacity: 0 !important; }
-  .cc-note { max-width: 720px; }
+  .cc-note { max-width: none; }
   body.anim-static .ph-a .msg, body.anim-static .ph-a .day,
   body.anim-static .ph-b .msg, body.anim-static .ph-b .day { transition: none !important; }
   body.anim-static .cc-hint { display: none; }
@@ -78,7 +80,7 @@
 </head>
 <body>
   <div class="slide">
-    <h1 data-reveal><span class="accent">Example:</span> Which health AI chatbot better promotes agency?</h1>
+    <h1 data-reveal>Workshops help NGOs identify <span class="accent">signals of agency</span> in human-AI conversations.</h1>
 
     <div class="cc-row">
       <div class="ph-col ph-a" data-reveal>
@@ -146,7 +148,7 @@
     <div class="cc-hint" id="ccHint" data-reveal><span class="dot"></span><span id="ccHintText">Click or arrow key to reveal &middot; 2 left</span></div>
     <div class="footnote cc-note" data-reveal>
       <span class="mark"></span>
-      <span>Simulated conversations for illustration based on real service transcripts</span>
+      <span>Simulated conversations for illustration based on real service transcripts. Sources: <a href="https://agency-fund.github.io/taf-nairobi-agency-measurement-slides" target="_blank" rel="noopener">Nairobi agency measurement workshop slides</a> &middot; <a href="https://evals4good.substack.com/p/labeling-human-agency-in-human-ai" target="_blank" rel="noopener">Labeling human agency in human-AI conversations</a>.</span>
     </div>
   </div>
 <script src="shared/anim.js"></script>
